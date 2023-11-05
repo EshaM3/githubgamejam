@@ -148,7 +148,7 @@ namespace StarterAssets
             AssignAnimationIDs();
 
             // reset our timeouts on start
-            _jumpTimeoutDelta = JumpTimeout;
+            //_jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
         }
 
@@ -156,7 +156,7 @@ namespace StarterAssets
         {
             _hasAnimator = TryGetComponent(out _animator);
 
-            JumpAndGravity();
+            //JumpAndGravity();
             GroundedCheck();
             Move();
         }
@@ -170,7 +170,7 @@ namespace StarterAssets
         {
             _animIDSpeed = Animator.StringToHash("Speed");
             _animIDGrounded = Animator.StringToHash("Grounded");
-            _animIDJump = Animator.StringToHash("Jump");
+            //_animIDJump = Animator.StringToHash("Jump");
             _animIDFreeFall = Animator.StringToHash("FreeFall");
             _animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
         }
@@ -298,7 +298,7 @@ namespace StarterAssets
                 {
                     _verticalVelocity = -2f;
                 }
-
+                /*
                 // Jump
                 if (_input.jump && _jumpTimeoutDelta <= 0.0f)
                 {
@@ -317,11 +317,15 @@ namespace StarterAssets
                 {
                     _jumpTimeoutDelta -= Time.deltaTime;
                 }
+                */
             }
+
             else
             {
+                    /*
                 // reset the jump timeout timer
                 _jumpTimeoutDelta = JumpTimeout;
+                    */
 
                 // fall timeout
                 if (_fallTimeoutDelta >= 0.0f)
@@ -337,8 +341,10 @@ namespace StarterAssets
                     }
                 }
 
+                /*
                 // if we are not grounded, do not jump
                 _input.jump = false;
+                */
             }
 
             // apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
