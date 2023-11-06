@@ -122,6 +122,8 @@ namespace StarterAssets
             }
         }
 
+        //GameJamAdditions
+        public float TimpaniLaunchHeight; //subject to change based on Music Notes later on
 
         private void Awake()
         {
@@ -156,7 +158,7 @@ namespace StarterAssets
         {
             _hasAnimator = TryGetComponent(out _animator);
 
-            //JumpAndGravity();
+            JumpAndGravity();
             GroundedCheck();
             Move();
         }
@@ -170,7 +172,7 @@ namespace StarterAssets
         {
             _animIDSpeed = Animator.StringToHash("Speed");
             _animIDGrounded = Animator.StringToHash("Grounded");
-            //_animIDJump = Animator.StringToHash("Jump");
+            _animIDJump = Animator.StringToHash("Jump");
             _animIDFreeFall = Animator.StringToHash("FreeFall");
             _animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
         }
@@ -351,6 +353,20 @@ namespace StarterAssets
             if (_verticalVelocity < _terminalVelocity)
             {
                 _verticalVelocity += Gravity * Time.deltaTime;
+            }
+        }
+
+        private void OnControllerColliderHit(ControllerColliderHit hit)
+        {
+            if (hit.gameObject.CompareTag("Timpani"))
+            {
+                _verticalVelocity = Mathf.Sqrt(TimpaniLaunchHeight * -2f * Gravity);
+
+                // update animator if using character - this mechanic uses the jump animation
+                if (_hasAnimator)
+                {
+                    _animator.SetBool(_animIDJump, true);
+                }
             }
         }
 
