@@ -368,6 +368,11 @@ namespace StarterAssets
                     _animator.SetBool(_animIDJump, true);
                 }
             }
+            MusicNote mn = hit.gameObject.GetComponent<MusicNote>();
+            if (mn != null)
+            {
+                GetComponent<PickupMusicNote>().CollideWithNote(mn);
+            }
         }
 
         private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
