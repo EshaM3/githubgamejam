@@ -6,6 +6,7 @@ public class Trombone : MonoBehaviour
 {
     public Material[] tromboneMats;
     public Material[] currentTromboneMats;
+    public AudioClip[] tromboneSfx;
     public GameObject tromboneCollider;
     public GameObject containedMusicNote;
     public int containedMusicNoteValue = 0;
@@ -51,6 +52,11 @@ public class Trombone : MonoBehaviour
             poppedOutMusicNote.GetComponent<MusicNote>().changeNote(containedMusicNoteValue);
         }*/
         containedMusicNoteValue = newNote;
+        PlaySfx();
+    }
+
+    public void PlaySfx(){
+        GetComponent<AudioSource>().PlayOneShot(tromboneSfx[containedMusicNoteValue]);
     }
 
 }

@@ -48,6 +48,7 @@ public class Bear : MonoBehaviour
         }
         raspberryParent.SetActive(true);
         anim.SetTrigger("Berry");
+        GetComponent<AudioSource>().Play();
 
         yield return new WaitForSeconds(1.5f);
 

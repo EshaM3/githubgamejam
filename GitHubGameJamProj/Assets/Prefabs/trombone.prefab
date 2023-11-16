@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1152122996825413169}
   - component: {fileID: 1152122996825413172}
   - component: {fileID: 6628595024685289673}
+  - component: {fileID: -1546984487725224981}
   m_Layer: 0
   m_Name: trombone
   m_TagString: Trombone
@@ -125,7 +126,18 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 7dafc01c45f6748aeaccd528572f16b3, type: 2}
   - {fileID: 2100000, guid: 34c69ce450e7f4594bc18065234d9550, type: 2}
   - {fileID: 2100000, guid: fb0ed36469319455ebc98aa8aaf4b037, type: 2}
-  currentTromboneMats: []
+  currentTromboneMats:
+  - {fileID: 2100000, guid: cff2336007b7240bbab9e48b22eee7d9, type: 2}
+  - {fileID: 2100000, guid: 747a29ca0a30348ec94ed4ef968b0f35, type: 2}
+  tromboneSfx:
+  - {fileID: 8300000, guid: 407fac93aac3140258ce413ffd42f854, type: 3}
+  - {fileID: 8300000, guid: 8ed32a85093b94d4bba835da68d3f129, type: 3}
+  - {fileID: 8300000, guid: b735df496a3d54481bcbf3fc56a17871, type: 3}
+  - {fileID: 8300000, guid: ba724041dc0d8466f9086ecf89036e7e, type: 3}
+  - {fileID: 8300000, guid: fcbbda621294648cdb5c55d21398d720, type: 3}
+  - {fileID: 8300000, guid: 91c1c5d6462024fcc80834e43a552e50, type: 3}
+  - {fileID: 8300000, guid: de0e11f1b5a5c4a27a81aeff0b06c8e7, type: 3}
+  - {fileID: 8300000, guid: cba23c203776d4ce1996286d10be81ef, type: 3}
   tromboneCollider: {fileID: 5322737304123174487}
   containedMusicNote: {fileID: 245973960387580288, guid: bcec2d47ae4994a038e95d1ee55cee4e,
     type: 3}
@@ -144,6 +156,102 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   snapPosition: 1
   snapRotation: 1
+--- !u!82 &-1546984487725224981
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233131731812064661}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &5322737304123174487
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,8 +279,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5322737304123174487}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.01438, y: 0, z: -0.00073}
-  m_LocalScale: {x: 0.032377858, y: 0.0036717998, z: 0.0010775999}
+  m_LocalPosition: {x: -0.00426, y: 0, z: -0.00073}
+  m_LocalScale: {x: 0.011017, y: 0.0036717998, z: 0.0010775999}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 610115427602253615}

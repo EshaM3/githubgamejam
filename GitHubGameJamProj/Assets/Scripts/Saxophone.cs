@@ -11,6 +11,7 @@ public class Saxophone : MonoBehaviour
 
     public Material[] saxophoneMats;
     public Material[] currentSaxophoneMats;
+    public AudioClip[] saxophoneSfx;
     public GameObject containedMusicNote;
     public int containedMusicNoteValue = 0;
     float amountRotated = 0f;
@@ -54,6 +55,7 @@ public class Saxophone : MonoBehaviour
     IEnumerator spacedOut()
     {
         yield return new WaitForSeconds(2);
+        PlaySfx();
         var rasp = Instantiate(raspberry, launchPoint.position, raspberry.transform.rotation);
         /*rasp.gameObject.GetComponent<Rigidbody>().velocity = rasp.gameObject.GetComponent<Rigidbody>().velocity +
             transform.forward*RaspberryLaunchHeight*.5f - transform.right*RaspberryLaunchHeight*3;*/
@@ -74,5 +76,10 @@ public class Saxophone : MonoBehaviour
             poppedOutMusicNote.GetComponent<MusicNote>().changeNote(containedMusicNoteValue);
         }*/
         containedMusicNoteValue = newNote;
+        PlaySfx();
+    }
+
+    public void PlaySfx(){
+        GetComponent<AudioSource>().PlayOneShot(saxophoneSfx[containedMusicNoteValue]);
     }
 }

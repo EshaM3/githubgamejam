@@ -367,6 +367,7 @@ namespace StarterAssets
             {
                 TimpaniLaunchHeight = hit.transform.parent.gameObject.GetComponent<Timpani>().timpaniForce;
                 _verticalVelocity = Mathf.Sqrt(TimpaniLaunchHeight * -2f * Gravity);
+                hit.transform.parent.gameObject.GetComponent<Timpani>().PlaySfx();
 
                 // update animator if using character - this mechanic uses the jump animation
                 if (_hasAnimator)

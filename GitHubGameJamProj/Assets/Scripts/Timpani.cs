@@ -7,6 +7,7 @@ public class Timpani : MonoBehaviour
     //these values will change based on music note brought to it
     public Material[] timpaniMats;
     public Material[] currentTimpaniMats;
+    public AudioClip[] timpaniSfx;
     public float timpaniForce;
     public GameObject containedMusicNote;
     public int containedMusicNoteValue = 0;
@@ -37,5 +38,10 @@ public class Timpani : MonoBehaviour
             poppedOutMusicNote.GetComponent<MusicNote>().changeNote(containedMusicNoteValue);
         }*/
         containedMusicNoteValue = newNote;
+        PlaySfx();
+    }
+
+    public void PlaySfx(){
+        GetComponent<AudioSource>().PlayOneShot(timpaniSfx[containedMusicNoteValue]);
     }
 }

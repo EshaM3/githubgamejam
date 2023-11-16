@@ -6,6 +6,7 @@ public class MusicNote : MonoBehaviour
 {
     public int note;
     public Material[] noteMats;
+    public AudioClip[] noteSfx;
     Material[] mats;
     float rotateSpeed = 20f;
     public bool shouldRotate = true;

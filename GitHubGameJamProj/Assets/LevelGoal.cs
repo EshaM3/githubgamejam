@@ -36,6 +36,7 @@ public class LevelGoal : MonoBehaviour
     IEnumerator levelComplete()
     {
         anim.SetTrigger("Win");
+        GetComponent<AudioSource>().Play();
 
         yield return new WaitForSeconds(4.5f);
 
