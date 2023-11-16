@@ -9,21 +9,29 @@ public class Timpani : MonoBehaviour
     public Material[] currentTimpaniMats;
     public float timpaniForce;
     public GameObject containedMusicNote;
-    public int containedMusicNoteValue = -1;
+    public int containedMusicNoteValue = 0;
 
     private void Start()
     {
         currentTimpaniMats = GetComponent<SkinnedMeshRenderer>().materials;
     }
 
+    private void Update(){
+        currentTimpaniMats[0] = timpaniMats[containedMusicNoteValue];
+        GetComponent<SkinnedMeshRenderer>().materials = currentTimpaniMats;
+
+        //changes timpani bounce "force" based on note
+        timpaniForce = (containedMusicNoteValue + 1) * 0.5f;
+    }
+
     public void PopOutAndStore(int newNote)
     {
-        if(containedMusicNoteValue != -1)
+        /*if(containedMusicNoteValue != -1)
         {
             var poppedOutMusicNote = Instantiate(containedMusicNote);
             poppedOutMusicNote.transform.position = transform.position - transform.right + transform.forward;
             poppedOutMusicNote.GetComponent<MusicNote>().changeNote(containedMusicNoteValue);
-        }
+        }*/
         containedMusicNoteValue = newNote;
     }
 }

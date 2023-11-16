@@ -37,7 +37,7 @@ public class PickupAndDepositMusicNote : MonoBehaviour
         Destroy(takenNote.gameObject);
     }
 
-    private void SummonMusicNote(int notePitch){
+    public void SummonMusicNote(int notePitch){
         GameObject go = Instantiate<GameObject>(musicNotePrefab);
         go.transform.position = transform.position - transform.forward + transform.up;
         go.GetComponent<MusicNote>().note = notePitch;

@@ -128,7 +128,7 @@ MonoBehaviour:
   timpaniForce: 0
   containedMusicNote: {fileID: 245973960387580288, guid: bcec2d47ae4994a038e95d1ee55cee4e,
     type: 3}
-  containtedMusicNoteValue: 0
+  containedMusicNoteValue: 0
 --- !u!1 &6140172225879368757
 GameObject:
   m_ObjectHideFlags: 0

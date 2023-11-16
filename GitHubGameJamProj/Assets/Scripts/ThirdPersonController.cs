@@ -375,13 +375,9 @@ namespace StarterAssets
                 //changes timpani color based on note
                 Timpani timpani = hit.gameObject.GetComponent<Timpani>();
                 int mn_note = heldNote.GetComponent<MusicNote>().note;
-                timpani.currentTimpaniMats[0] = timpani.timpaniMats[mn_note];
-                timpani.GetComponent<SkinnedMeshRenderer>().materials = timpani.currentTimpaniMats;
-
-                //changes timpani bounce "force" based on note
-                timpani.timpaniForce = (mn_note + 1) * 0.5f;
 
                 //timpani pops out the note it contained previously and stores the new note
+                GetComponent<PickupAndDepositMusicNote>().SummonMusicNote(timpani.containedMusicNoteValue);
                 timpani.PopOutAndStore(mn_note);
                 heldNote.SetActive(false);
                 GetComponent<PickupAndDepositMusicNote>().currentNote = -1;
@@ -396,16 +392,11 @@ namespace StarterAssets
                 //changes trombone length based on note
                 Trombone trombone = hit.gameObject.GetComponent<Trombone>();
                 int mn_note = heldNote.GetComponent<MusicNote>().note;
-                trombone.tromboneCollider.size = new Vector3(0.02102661f + (0.1f*(mn_note/7f)),
-                    trombone.tromboneCollider.size.y, trombone.tromboneCollider.size.z);
-                trombone.tromboneCollider.center = new Vector3(-0.0001598763f - (0.05f * (mn_note / 7f)),
-                    trombone.tromboneCollider.center.y, trombone.tromboneCollider.center.z);
 
                 //trombone color changes based on note
-                trombone.currentTromboneMats[1] = trombone.tromboneMats[mn_note];
-                trombone.GetComponent<SkinnedMeshRenderer>().materials = trombone.currentTromboneMats;
 
                 //trombone pops out the note it contained previously and stores the new note
+                GetComponent<PickupAndDepositMusicNote>().SummonMusicNote(trombone.containedMusicNoteValue);
                 trombone.PopOutAndStore(mn_note);
                 heldNote.SetActive(false);
                 GetComponent<PickupAndDepositMusicNote>().currentNote = -1;
@@ -416,15 +407,9 @@ namespace StarterAssets
                 //changing saxophone angle based on note
                 Saxophone saxophone = hit.gameObject.GetComponent<Saxophone>();
                 int mn_note = heldNote.GetComponent<MusicNote>().note;
-                saxophone.gameObject.transform.localEulerAngles = new Vector3(-100 + (10 * mn_note),
-                    saxophone.gameObject.transform.localEulerAngles.y,
-                    saxophone.gameObject.transform.localEulerAngles.z);
-
-                //saxophone color changes based on note
-                saxophone.currentSaxophoneMats[1] = saxophone.saxophoneMats[mn_note];
-                saxophone.GetComponent<SkinnedMeshRenderer>().materials = saxophone.currentSaxophoneMats;
 
                 //saxophone pops out the note it contained previously and stores the new note
+                GetComponent<PickupAndDepositMusicNote>().SummonMusicNote(saxophone.containedMusicNoteValue);
                 saxophone.PopOutAndStore(mn_note);
                 heldNote.SetActive(false);
                 GetComponent<PickupAndDepositMusicNote>().currentNote = -1;
