@@ -13,20 +13,26 @@ public class Saxophone : MonoBehaviour
     public Material[] currentSaxophoneMats;
     public GameObject containedMusicNote;
     public int containedMusicNoteValue = 0;
+    float yRot;
+    float zRot;
 
     // Start is called before the first frame update
     void Start()
     {
         currentSaxophoneMats = GetComponent<SkinnedMeshRenderer>().materials;
         StartCoroutine(spacedOut());
+        yRot = transform.localEulerAngles.y;
+        zRot = transform.localEulerAngles.z;
     }
 
     // Update is called once per frame
     void Update()
     {
-        gameObject.transform.localEulerAngles = new Vector3(-100 + (10 * containedMusicNoteValue),
+        /*gameObject.transform.localEulerAngles = new Vector3(-100 + (10 * containedMusicNoteValue),
             gameObject.transform.localEulerAngles.y,
-            gameObject.transform.localEulerAngles.z);
+            gameObject.transform.localEulerAngles.z);*/
+
+        transform.localRotation = Quaternion.Euler(-30 + (-12 * containedMusicNoteValue), yRot, zRot);
 
         //saxophone color changes based on note
         currentSaxophoneMats[1] = saxophoneMats[containedMusicNoteValue];
@@ -36,8 +42,9 @@ public class Saxophone : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         var rasp = Instantiate(raspberry, launchPoint.position, raspberry.transform.rotation);
-        rasp.gameObject.GetComponent<Rigidbody>().velocity = rasp.gameObject.GetComponent<Rigidbody>().velocity +
-            transform.forward*RaspberryLaunchHeight*.5f - transform.right*RaspberryLaunchHeight*3;
+        /*rasp.gameObject.GetComponent<Rigidbody>().velocity = rasp.gameObject.GetComponent<Rigidbody>().velocity +
+            transform.forward*RaspberryLaunchHeight*.5f - transform.right*RaspberryLaunchHeight*3;*/
+        rasp.gameObject.GetComponent<Rigidbody>().velocity = launchPoint.transform.forward*RaspberryLaunchHeight*1.5f;
         if (bearIsPresent == false)
         {
             StartCoroutine(spacedOut());

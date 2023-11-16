@@ -14,7 +14,9 @@ GameObject:
   - component: {fileID: 9157485608890244206}
   - component: {fileID: 9157485608890244205}
   - component: {fileID: 9157485608890244207}
-  m_Layer: 0
+  - component: {fileID: 7965843611969362451}
+  - component: {fileID: 7277799368990161121}
+  m_Layer: 11
   m_Name: raspberry
   m_TagString: Raspberry
   m_Icon: {fileID: 0}
@@ -126,8 +128,35 @@ MeshCollider:
   m_GameObject: {fileID: 7743266089354792369}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 8590917907708464272, guid: 1f01496ae354f4728a17820cda04aaa2, type: 3}
+--- !u!135 &7965843611969362451
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7743266089354792369}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.043999992
+  m_Center: {x: 0, y: -3.0875197e-10, z: 0.010359998}
+--- !u!114 &7277799368990161121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7743266089354792369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0029a3424c25418096d38b325337b52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Gravity: -15
+  lifeTimer: 5

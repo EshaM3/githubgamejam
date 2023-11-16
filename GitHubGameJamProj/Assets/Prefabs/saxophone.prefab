@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1588729775}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: launch point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23,14 +23,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1588729774}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0.2831207, z: -0, w: 0.95908433}
   m_LocalPosition: {x: -0.0071, y: 0, z: 0.0023}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5827461540876199984}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -32.893, z: 0}
 --- !u!1 &6599072844722565770
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 2114446471333468105}
   - component: {fileID: 5336186959956327342}
   - component: {fileID: 5336186959956327343}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: saxophone
   m_TagString: Saxophone
   m_Icon: {fileID: 0}
@@ -133,7 +133,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 553faa32badb24ca7a79493dbb62cfee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raspberry: {fileID: 0}
+  raspberry: {fileID: 7743266089354792369, guid: 599fe3dd016ea48ee9b5bc193ecd3230,
+    type: 3}
   launchPoint: {fileID: 1588729775}
   RaspberryLaunchHeight: 5
   bearIsPresent: 0

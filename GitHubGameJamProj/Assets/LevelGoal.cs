@@ -9,8 +9,10 @@ public class LevelGoal : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //Debug.Log("Colliding!");
         if (other.CompareTag("Player"))
         {
+            //Debug.Log("Colliding With Player!");
             SceneManager.LoadScene(nextSceneName);
         }
     }
