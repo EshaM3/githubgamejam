@@ -13,12 +13,16 @@ public class Trombone : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentTromboneMats = GetComponent<SkinnedMeshRenderer>().materials;
         //tromboneCollider = GetComponent<BoxCollider>();
     }
 
     void Update()
     {
+    }
+
+    public void UpdateColor(){
+        currentTromboneMats = GetComponent<SkinnedMeshRenderer>().sharedMaterials;
+
         float xPos0 = -0.00426f;
         float xPos7 = -0.01438f;
         
@@ -32,6 +36,7 @@ public class Trombone : MonoBehaviour
             tromboneCollider.transform.localPosition.y, tromboneCollider.transform.localPosition.z);
         tromboneCollider.transform.localScale = new Vector3(xScale0 + (scaleGap*(containedMusicNoteValue/7f)),
             tromboneCollider.transform.localScale.y, tromboneCollider.transform.localScale.z);
+
         GetComponent<SkinnedMeshRenderer>().SetBlendShapeWeight(0, 100f*containedMusicNoteValue/7f);
         currentTromboneMats[1] = tromboneMats[containedMusicNoteValue];
         GetComponent<SkinnedMeshRenderer>().materials = currentTromboneMats;

@@ -816,6 +816,7 @@ GameObject:
   - component: {fileID: 1104012093815574999}
   - component: {fileID: 1123821228}
   - component: {fileID: 1123821227}
+  - component: {fileID: 6245683648358951628}
   m_Layer: 0
   m_Name: Ballerina
   m_TagString: Untagged
@@ -888,6 +889,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextSceneName: Title
+--- !u!114 &6245683648358951628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3338486162854310469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a57a7b680c4b445d8b3e97c38acc49a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snapPosition: 1
+  snapRotation: 1
 --- !u!1 &3440014705866560029
 GameObject:
   m_ObjectHideFlags: 0

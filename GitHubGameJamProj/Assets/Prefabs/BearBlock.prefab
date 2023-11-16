@@ -1841,6 +1841,7 @@ GameObject:
   - component: {fileID: 88297997447058522}
   - component: {fileID: 7364190990442937122}
   - component: {fileID: 6938800978497321492}
+  - component: {fileID: -2879195854661857422}
   m_Layer: 0
   m_Name: BearBlock
   m_TagString: Untagged
@@ -1911,6 +1912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a381cf18957f64cd39cda69cf4c78640, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stopCreator: 0
   assignedSaxophone: {fileID: 0}
   colliders:
   - {fileID: 7364190990442937122}
@@ -1946,6 +1948,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-2879195854661857422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5978705413909633361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a57a7b680c4b445d8b3e97c38acc49a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snapPosition: 1
+  snapRotation: 1
 --- !u!1 &5998287033123344231
 GameObject:
   m_ObjectHideFlags: 0

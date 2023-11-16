@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 2114446471333468105}
   - component: {fileID: 5336186959956327342}
   - component: {fileID: 5336186959956327343}
+  - component: {fileID: 5274935334151519597}
   m_Layer: 10
   m_Name: saxophone
   m_TagString: Saxophone
@@ -57,9 +58,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6599072844722565770}
-  m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
+  m_LocalRotation: {x: -0.57922804, y: -0.40557972, z: 0.40557984, w: 0.57922804}
   m_LocalPosition: {x: 1.67, y: 1.01, z: 21.743}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalScale: {x: 50, y: 50, z: 50}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1588729775}
@@ -136,7 +137,7 @@ MonoBehaviour:
   raspberry: {fileID: 7743266089354792369, guid: 599fe3dd016ea48ee9b5bc193ecd3230,
     type: 3}
   launchPoint: {fileID: 1588729775}
-  RaspberryLaunchHeight: 5
+  RaspberryLaunchHeight: 4.5
   bearIsPresent: 0
   saxophoneMats:
   - {fileID: 2100000, guid: 747a29ca0a30348ec94ed4ef968b0f35, type: 2}
@@ -147,10 +148,14 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 7dafc01c45f6748aeaccd528572f16b3, type: 2}
   - {fileID: 2100000, guid: 34c69ce450e7f4594bc18065234d9550, type: 2}
   - {fileID: 2100000, guid: fb0ed36469319455ebc98aa8aaf4b037, type: 2}
-  currentSaxophoneMats: []
+  currentSaxophoneMats:
+  - {fileID: 2100000, guid: 193edf5fcb8b7477b8d9a0432fac4cfa, type: 2}
+  - {fileID: 2100000, guid: 747a29ca0a30348ec94ed4ef968b0f35, type: 2}
+  - {fileID: 2100000, guid: 2ed0bd3bbafa74947a9fafdcf9f3100f, type: 2}
   containedMusicNote: {fileID: 245973960387580288, guid: bcec2d47ae4994a038e95d1ee55cee4e,
     type: 3}
   containedMusicNoteValue: 0
+  verticalRotation: 0
 --- !u!64 &5336186959956327343
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -165,3 +170,17 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -1963521994490203869, guid: aee0873b5b6e84a508e4c7f01002ad65, type: 3}
+--- !u!114 &5274935334151519597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6599072844722565770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a57a7b680c4b445d8b3e97c38acc49a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snapPosition: 1
+  snapRotation: 0

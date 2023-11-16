@@ -13,10 +13,14 @@ public class Timpani : MonoBehaviour
 
     private void Start()
     {
-        currentTimpaniMats = GetComponent<SkinnedMeshRenderer>().materials;
     }
 
     private void Update(){
+        UpdateColor();
+    }
+
+    public void UpdateColor(){
+        currentTimpaniMats = GetComponent<SkinnedMeshRenderer>().sharedMaterials;
         currentTimpaniMats[0] = timpaniMats[containedMusicNoteValue];
         GetComponent<SkinnedMeshRenderer>().materials = currentTimpaniMats;
 

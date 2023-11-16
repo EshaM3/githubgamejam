@@ -7,27 +7,30 @@ public class MusicNote : MonoBehaviour
     public int note;
     public Material[] noteMats;
     Material[] mats;
+    float rotateSpeed = 20f;
+    public bool shouldRotate = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        mats = GetComponent<MeshRenderer>().materials;
-        mats[0] = noteMats[note];
-        GetComponent<MeshRenderer>().materials = mats;
+        UpdateColor();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        transform.RotateAround(transform.position, Vector3.up, rotateSpeed * Time.deltaTime);
+    }
+
+    public void UpdateColor(){
+        mats = GetComponent<MeshRenderer>().sharedMaterials;
+        mats[0] = noteMats[note];
+        GetComponent<MeshRenderer>().materials = mats;
     }
 
     public void changeNote(int newNote)
     {
-        mats = GetComponent<MeshRenderer>().materials;
-        mats[0] = noteMats[newNote];
-        GetComponent<MeshRenderer>().materials = mats;
-
         note = newNote;
+        UpdateColor();
     }
 }

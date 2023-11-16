@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 1128303243318324435}
   - component: {fileID: 1128303243318324434}
   - component: {fileID: 5220302070247978956}
-  m_Layer: 0
+  - component: {fileID: -5058572678301057482}
+  m_Layer: 12
   m_Name: MusicNote
   m_TagString: MusicNote
   m_Icon: {fileID: 0}
@@ -138,3 +139,18 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c58fc056b593a4aada60ec5ffaa6fb68, type: 2}
   - {fileID: 2100000, guid: e8d0c4fe8f57441328ec614e8517eba7, type: 2}
   - {fileID: 2100000, guid: d6e426abfd0f54376bc7fc9e0b442f46, type: 2}
+  shouldRotate: 1
+--- !u!114 &-5058572678301057482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 245973960387580288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a57a7b680c4b445d8b3e97c38acc49a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snapPosition: 1
+  snapRotation: 1

@@ -10,6 +10,10 @@ public class LevelOriginEditor : Editor
 
         LevelBuilderScript levelData = (LevelBuilderScript)target;
         levelData.SpawnMusicBox();
+
+        if(GUILayout.Button("Snap Objects To Grid")){
+            levelData.SnapObjects();
+        }
     }
 
 }

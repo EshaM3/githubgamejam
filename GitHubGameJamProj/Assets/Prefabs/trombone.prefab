@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5039765504323107030}
   - component: {fileID: 1152122996825413169}
   - component: {fileID: 1152122996825413172}
+  - component: {fileID: 6628595024685289673}
   m_Layer: 0
   m_Name: trombone
   m_TagString: Trombone
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 233131731812064661}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
   m_LocalPosition: {x: -0.634, y: 0, z: 0}
-  m_LocalScale: {x: 150, y: 150, z: 150}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6851397719878825589}
@@ -129,6 +130,20 @@ MonoBehaviour:
   containedMusicNote: {fileID: 245973960387580288, guid: bcec2d47ae4994a038e95d1ee55cee4e,
     type: 3}
   containedMusicNoteValue: 0
+--- !u!114 &6628595024685289673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233131731812064661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a57a7b680c4b445d8b3e97c38acc49a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snapPosition: 1
+  snapRotation: 1
 --- !u!1 &5322737304123174487
 GameObject:
   m_ObjectHideFlags: 0

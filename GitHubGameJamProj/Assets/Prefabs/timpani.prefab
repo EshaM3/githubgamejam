@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 543342863112135083}
   - component: {fileID: 5586617139592743826}
   - component: {fileID: 5586617139592743827}
+  - component: {fileID: 1444049533338361012}
   m_Layer: 0
   m_Name: timpani
   m_TagString: Timpani
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 4703674878971036904}
   m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: -5.53, y: -0, z: 16.52}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalScale: {x: 45, y: 45, z: 45}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6285248693636296933}
@@ -129,6 +130,20 @@ MonoBehaviour:
   containedMusicNote: {fileID: 245973960387580288, guid: bcec2d47ae4994a038e95d1ee55cee4e,
     type: 3}
   containedMusicNoteValue: 0
+--- !u!114 &1444049533338361012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4703674878971036904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a57a7b680c4b445d8b3e97c38acc49a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snapPosition: 1
+  snapRotation: 1
 --- !u!1 &6140172225879368757
 GameObject:
   m_ObjectHideFlags: 0

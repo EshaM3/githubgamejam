@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1711316177888597395}
   - component: {fileID: 2310359160738470454}
   - component: {fileID: 573360282478456572}
+  - component: {fileID: -1713685516994735984}
   m_Layer: 0
   m_Name: PuzzleRamp
   m_TagString: Untagged
@@ -85,6 +86,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &-1713685516994735984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2086292886745091881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a57a7b680c4b445d8b3e97c38acc49a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snapPosition: 1
+  snapRotation: 1
 --- !u!1001 &195211725859024175
 PrefabInstance:
   m_ObjectHideFlags: 0

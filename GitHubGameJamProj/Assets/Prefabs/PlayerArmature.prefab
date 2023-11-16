@@ -1038,6 +1038,7 @@ GameObject:
   - component: {fileID: 135756642000475821}
   - component: {fileID: 4416926081852918493}
   - component: {fileID: 1915488639949552072}
+  - component: {fileID: 6989843657884909803}
   m_Layer: 8
   m_Name: PlayerArmature
   m_TagString: Player
@@ -1148,7 +1149,7 @@ MonoBehaviour:
   CameraAngleOverride: 0
   LockCameraPosition: 0
   TimpaniLaunchHeight: 0
-  heldNote: {fileID: 0}
+  heldNote: {fileID: 7738524572093169928}
 --- !u!114 &5885216827943657505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1299,6 +1300,20 @@ MonoBehaviour:
   musicNotePrefab: {fileID: 245973960387580288, guid: bcec2d47ae4994a038e95d1ee55cee4e,
     type: 3}
   heldNote: {fileID: 7738524572093169928}
+--- !u!114 &6989843657884909803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4416926081852918481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a57a7b680c4b445d8b3e97c38acc49a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snapPosition: 1
+  snapRotation: 1
 --- !u!1 &4523139366846529165
 GameObject:
   m_ObjectHideFlags: 0
@@ -2772,7 +2787,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a699b85f0714e40e5938ab7607a5f736,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a699b85f0714e40e5938ab7607a5f736, type: 3}
@@ -2782,6 +2797,29 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7468563336946515033}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7400153034576820107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7738524572093169928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26682c0c7032246f981e4223383934df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  note: 0
+  noteMats:
+  - {fileID: 2100000, guid: ae5e5c28eecd844b2aa2a117ea8455db, type: 2}
+  - {fileID: 2100000, guid: 97165689923674aa0a592a586dcd5be7, type: 2}
+  - {fileID: 2100000, guid: ec262e20b70364e76be8d13e5011e12a, type: 2}
+  - {fileID: 2100000, guid: c7cc71c11c3ac46a8983f52cfb5c0e48, type: 2}
+  - {fileID: 2100000, guid: 40ac08da56d244d0ebc7562f651f1246, type: 2}
+  - {fileID: 2100000, guid: c58fc056b593a4aada60ec5ffaa6fb68, type: 2}
+  - {fileID: 2100000, guid: e8d0c4fe8f57441328ec614e8517eba7, type: 2}
+  - {fileID: 2100000, guid: d6e426abfd0f54376bc7fc9e0b442f46, type: 2}
+  shouldRotate: 0
 --- !u!1001 &8640033573561910829
 PrefabInstance:
   m_ObjectHideFlags: 0

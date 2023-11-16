@@ -13,31 +13,44 @@ public class Saxophone : MonoBehaviour
     public Material[] currentSaxophoneMats;
     public GameObject containedMusicNote;
     public int containedMusicNoteValue = 0;
-    float yRot;
-    float zRot;
+    float amountRotated = 0f;
+    public float verticalRotation;
 
     // Start is called before the first frame update
     void Start()
     {
-        currentSaxophoneMats = GetComponent<SkinnedMeshRenderer>().materials;
         StartCoroutine(spacedOut());
-        yRot = transform.localEulerAngles.y;
-        zRot = transform.localEulerAngles.z;
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*gameObject.transform.localEulerAngles = new Vector3(-100 + (10 * containedMusicNoteValue),
-            gameObject.transform.localEulerAngles.y,
-            gameObject.transform.localEulerAngles.z);*/
+        UpdateColor();
+    }
 
-        transform.localRotation = Quaternion.Euler(-30 + (-12 * containedMusicNoteValue), yRot, zRot);
+    public void UpdateColor(){
+        currentSaxophoneMats = GetComponent<SkinnedMeshRenderer>().sharedMaterials;
+
+        transform.rotation = Quaternion.identity;
+        transform.RotateAround(transform.position, Vector3.right, -90f);
+        transform.RotateAround(transform.position, Vector3.up, verticalRotation);
+
+        float angle0 = -70f;
+        float angle7 = 25f;
+
+        //transform.RotateAround(transform.position, transform.up, -amountRotated);
+        //amountRotated = -30 + (-12 * containedMusicNoteValue);
+        amountRotated = angle0 + ((angle7-angle0) * containedMusicNoteValue/7f);
+        transform.RotateAround(transform.position, transform.up, amountRotated);
+
+        //transform.localRotation = Quaternion.Euler(transform.localEulerAngles.x, transform.localEulerAngles.y, -30 + (-12 * containedMusicNoteValue));
+
 
         //saxophone color changes based on note
         currentSaxophoneMats[1] = saxophoneMats[containedMusicNoteValue];
         GetComponent<SkinnedMeshRenderer>().materials = currentSaxophoneMats;
     }
+
     IEnumerator spacedOut()
     {
         yield return new WaitForSeconds(2);
