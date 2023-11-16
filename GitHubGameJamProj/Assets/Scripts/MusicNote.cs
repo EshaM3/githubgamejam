@@ -6,10 +6,12 @@ public class MusicNote : MonoBehaviour
 {
     public int note;
     public Material[] noteMats;
+    Material[] mats;
+
     // Start is called before the first frame update
     void Start()
     {
-        Material[] mats = GetComponent<MeshRenderer>().materials;
+        mats = GetComponent<MeshRenderer>().materials;
         mats[0] = noteMats[note];
         GetComponent<MeshRenderer>().materials = mats;
     }
@@ -18,5 +20,14 @@ public class MusicNote : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void changeNote(int newNote)
+    {
+        mats = GetComponent<MeshRenderer>().materials;
+        mats[0] = noteMats[newNote];
+        GetComponent<MeshRenderer>().materials = mats;
+
+        note = newNote;
     }
 }

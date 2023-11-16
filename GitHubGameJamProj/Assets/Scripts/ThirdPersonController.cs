@@ -123,7 +123,8 @@ namespace StarterAssets
         }
 
         //GameJamAdditions
-        public float TimpaniLaunchHeight; //subject to change based on Music Notes later on
+        public float TimpaniLaunchHeight; //subject to change based on Music Notes
+        public GameObject heldNote;
 
         private void Awake()
         {
@@ -358,8 +359,9 @@ namespace StarterAssets
 
         private void OnControllerColliderHit(ControllerColliderHit hit)
         {
-            if (hit.gameObject.CompareTag("Timpani"))
+            if (hit.gameObject.CompareTag("TimpaniSurface"))
             {
+                TimpaniLaunchHeight = hit.transform.parent.gameObject.GetComponent<Timpani>().timpaniForce;
                 _verticalVelocity = Mathf.Sqrt(TimpaniLaunchHeight * -2f * Gravity);
 
                 // update animator if using character - this mechanic uses the jump animation
@@ -368,10 +370,26 @@ namespace StarterAssets
                     _animator.SetBool(_animIDJump, true);
                 }
             }
-            MusicNote mn = hit.gameObject.GetComponent<MusicNote>();
-            if (mn != null)
+            else if (hit.gameObject.CompareTag("Timpani") && heldNote.activeInHierarchy)
             {
-                GetComponent<PickupMusicNote>().CollideWithNote(mn);
+                //changes timpani color based on note
+                Timpani timpani = hit.gameObject.GetComponent<Timpani>();
+                int mn_note = heldNote.GetComponent<MusicNote>().note;
+                timpani.currentTimpaniMats[0] = timpani.timpaniMats[mn_note];
+                timpani.GetComponent<SkinnedMeshRenderer>().materials = timpani.currentTimpaniMats;
+
+                //changes timpani bounce "force" based on note
+                timpani.timpaniForce = (mn_note + 1) * 0.5f;
+
+                //timpani pops out the note it contained previously and stores the new note
+                timpani.PopOutAndStore(mn_note);
+                heldNote.SetActive(false);
+                GetComponent<PickupAndDepositMusicNote>().currentNote = -1;
+            }
+            if (hit.gameObject.CompareTag("MusicNote"))
+            {
+                MusicNote mn = hit.gameObject.GetComponent<MusicNote>();
+                GetComponent<PickupAndDepositMusicNote>().CollideWithNote(mn);
             }
         }
 
