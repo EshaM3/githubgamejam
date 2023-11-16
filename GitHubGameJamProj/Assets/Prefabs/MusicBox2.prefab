@@ -106,6 +106,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 819092988878368945}
+  - component: {fileID: 5701662959509884345}
   m_Layer: 0
   m_Name: MusicBox2
   m_TagString: Untagged
@@ -132,6 +133,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5701662959509884345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3774872006281949721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e1bfa5a74a9e43f5b6a373e498f4bb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walls:
+  - {fileID: 904171393212204276}
+  - {fileID: 7585333526520653718}
 --- !u!1 &7585333526520653718
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,7 +166,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2561920172577030565
 Transform:
   m_ObjectHideFlags: 0
@@ -315,6 +331,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CircleCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: add291e741cd14db7b63a4751a145b44,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: add291e741cd14db7b63a4751a145b44, type: 3}

@@ -45,6 +45,7 @@ public class Saxophone : MonoBehaviour
         /*rasp.gameObject.GetComponent<Rigidbody>().velocity = rasp.gameObject.GetComponent<Rigidbody>().velocity +
             transform.forward*RaspberryLaunchHeight*.5f - transform.right*RaspberryLaunchHeight*3;*/
         rasp.gameObject.GetComponent<Rigidbody>().velocity = launchPoint.transform.forward*RaspberryLaunchHeight*1.5f;
+        rasp.GetComponent<RaspberryBounce>().creator = this;
         if (bearIsPresent == false)
         {
             StartCoroutine(spacedOut());

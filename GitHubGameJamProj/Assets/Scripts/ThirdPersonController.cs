@@ -214,6 +214,10 @@ namespace StarterAssets
                 _cinemachineTargetYaw, 0.0f);
         }
 
+        public bool IsSprinting(){
+            return _input.sprint;
+        }
+
         private void Move()
         {
             // set target speed based on move speed, sprint speed and if sprint is pressed
