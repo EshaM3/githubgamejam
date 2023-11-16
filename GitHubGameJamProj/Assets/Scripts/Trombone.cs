@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Trombone : MonoBehaviour
 {
+    public Material[] tromboneMats;
+    public Material[] currentTromboneMats;
     public BoxCollider tromboneCollider;
     public GameObject containedMusicNote;
     public int containedMusicNoteValue = -1;
@@ -11,6 +13,7 @@ public class Trombone : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        currentTromboneMats = GetComponent<SkinnedMeshRenderer>().materials;
         tromboneCollider = GetComponent<BoxCollider>();
     }
 

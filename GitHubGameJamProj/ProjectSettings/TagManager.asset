@@ -9,6 +9,8 @@ TagManager:
   - TimpaniSurface
   - MusicNote
   - Trombone
+  - Raspberry
+  - Saxophone
   layers:
   - Default
   - TransparentFX

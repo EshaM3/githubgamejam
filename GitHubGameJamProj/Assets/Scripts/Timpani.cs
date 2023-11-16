@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Timpani : MonoBehaviour
 {
-    //these values will change based on music note brought to it (onTriggerEnter)
+    //these values will change based on music note brought to it
     public Material[] timpaniMats;
     public Material[] currentTimpaniMats;
     public float timpaniForce;

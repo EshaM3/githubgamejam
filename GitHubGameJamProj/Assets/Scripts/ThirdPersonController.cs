@@ -401,8 +401,31 @@ namespace StarterAssets
                 trombone.tromboneCollider.center = new Vector3(-0.0001598763f - (0.05f * (mn_note / 7f)),
                     trombone.tromboneCollider.center.y, trombone.tromboneCollider.center.z);
 
+                //trombone color changes based on note
+                trombone.currentTromboneMats[1] = trombone.tromboneMats[mn_note];
+                trombone.GetComponent<SkinnedMeshRenderer>().materials = trombone.currentTromboneMats;
+
                 //trombone pops out the note it contained previously and stores the new note
                 trombone.PopOutAndStore(mn_note);
+                heldNote.SetActive(false);
+                GetComponent<PickupAndDepositMusicNote>().currentNote = -1;
+            }
+
+            if (hit.gameObject.CompareTag("Saxophone") && heldNote.activeInHierarchy)
+            {
+                //changing saxophone angle based on note
+                Saxophone saxophone = hit.gameObject.GetComponent<Saxophone>();
+                int mn_note = heldNote.GetComponent<MusicNote>().note;
+                saxophone.gameObject.transform.localEulerAngles = new Vector3(-100 + (10 * mn_note),
+                    saxophone.gameObject.transform.localEulerAngles.y,
+                    saxophone.gameObject.transform.localEulerAngles.z);
+
+                //saxophone color changes based on note
+                saxophone.currentSaxophoneMats[1] = saxophone.saxophoneMats[mn_note];
+                saxophone.GetComponent<SkinnedMeshRenderer>().materials = saxophone.currentSaxophoneMats;
+
+                //saxophone pops out the note it contained previously and stores the new note
+                saxophone.PopOutAndStore(mn_note);
                 heldNote.SetActive(false);
                 GetComponent<PickupAndDepositMusicNote>().currentNote = -1;
             }
