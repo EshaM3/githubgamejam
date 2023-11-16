@@ -391,6 +391,21 @@ namespace StarterAssets
                 MusicNote mn = hit.gameObject.GetComponent<MusicNote>();
                 GetComponent<PickupAndDepositMusicNote>().CollideWithNote(mn);
             }
+            if (hit.gameObject.CompareTag("Trombone") && heldNote.activeInHierarchy)
+            {
+                //changes trombone length based on note
+                Trombone trombone = hit.gameObject.GetComponent<Trombone>();
+                int mn_note = heldNote.GetComponent<MusicNote>().note;
+                trombone.tromboneCollider.size = new Vector3(0.02102661f + (0.1f*(mn_note/7f)),
+                    trombone.tromboneCollider.size.y, trombone.tromboneCollider.size.z);
+                trombone.tromboneCollider.center = new Vector3(-0.0001598763f - (0.05f * (mn_note / 7f)),
+                    trombone.tromboneCollider.center.y, trombone.tromboneCollider.center.z);
+
+                //trombone pops out the note it contained previously and stores the new note
+                trombone.PopOutAndStore(mn_note);
+                heldNote.SetActive(false);
+                GetComponent<PickupAndDepositMusicNote>().currentNote = -1;
+            }
         }
 
         private static float ClampAngle(float lfAngle, float lfMin, float lfMax)

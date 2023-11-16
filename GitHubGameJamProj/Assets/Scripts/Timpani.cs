@@ -9,7 +9,7 @@ public class Timpani : MonoBehaviour
     public Material[] currentTimpaniMats;
     public float timpaniForce;
     public GameObject containedMusicNote;
-    public int containtedMusicNoteValue = -1;
+    public int containedMusicNoteValue = -1;
 
     private void Start()
     {
@@ -18,12 +18,12 @@ public class Timpani : MonoBehaviour
 
     public void PopOutAndStore(int newNote)
     {
-        if(containtedMusicNoteValue != -1)
+        if(containedMusicNoteValue != -1)
         {
             var poppedOutMusicNote = Instantiate(containedMusicNote);
             poppedOutMusicNote.transform.position = transform.position - transform.right + transform.forward;
-            poppedOutMusicNote.GetComponent<MusicNote>().changeNote(containtedMusicNoteValue);
+            poppedOutMusicNote.GetComponent<MusicNote>().changeNote(containedMusicNoteValue);
         }
-        containtedMusicNoteValue = newNote;
+        containedMusicNoteValue = newNote;
     }
 }

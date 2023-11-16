@@ -8,6 +8,7 @@ TagManager:
   - Timpani
   - TimpaniSurface
   - MusicNote
+  - Trombone
   layers:
   - Default
   - TransparentFX
