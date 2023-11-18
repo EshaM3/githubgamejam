@@ -19,6 +19,7 @@ public class Trombone : MonoBehaviour
 
     void Update()
     {
+        UpdateColor();
     }
 
     public void UpdateColor(){
