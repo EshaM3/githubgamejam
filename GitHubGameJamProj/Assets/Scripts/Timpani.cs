@@ -17,7 +17,7 @@ public class Timpani : MonoBehaviour
     }
 
     private void Update(){
-        UpdateColor();
+        
     }
 
     public void UpdateColor(){
@@ -31,14 +31,15 @@ public class Timpani : MonoBehaviour
 
     public void PopOutAndStore(int newNote)
     {
-        /*if(containedMusicNoteValue != -1)
-        {
-            var poppedOutMusicNote = Instantiate(containedMusicNote);
-            poppedOutMusicNote.transform.position = transform.position - transform.right + transform.forward;
-            poppedOutMusicNote.GetComponent<MusicNote>().changeNote(containedMusicNoteValue);
-        }*/
+        //if(containedMusicNoteValue != -1)
+        //{
+        //    var poppedOutMusicNote = Instantiate(containedMusicNote);
+        //    poppedOutMusicNote.transform.position = playerTransform.position - playerTransform.forward + playerTransform.up;
+        //    poppedOutMusicNote.GetComponent<MusicNote>().changeNote(containedMusicNoteValue);
+        //}
         containedMusicNoteValue = newNote;
         PlaySfx();
+        UpdateColor();
     }
 
     public void PlaySfx(){

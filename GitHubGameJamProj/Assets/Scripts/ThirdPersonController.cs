@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
+using System.Collections;
+using System.Collections.Generic;
 #endif
 
 /* Note: animations are called via the controller for both the character and capsule using animator null checks
@@ -363,6 +365,7 @@ namespace StarterAssets
 
         private void OnControllerColliderHit(ControllerColliderHit hit)
         {
+            StartCoroutine(spacedOut());
             if (hit.gameObject.CompareTag("TimpaniSurface"))
             {
                 TimpaniLaunchHeight = hit.transform.parent.gameObject.GetComponent<Timpani>().timpaniForce;
@@ -383,9 +386,9 @@ namespace StarterAssets
 
                 //timpani pops out the note it contained previously and stores the new note
                 GetComponent<PickupAndDepositMusicNote>().SummonMusicNote(timpani.containedMusicNoteValue);
+                GetComponent<PickupAndDepositMusicNote>().currentNote = -1;
                 timpani.PopOutAndStore(mn_note);
                 heldNote.SetActive(false);
-                GetComponent<PickupAndDepositMusicNote>().currentNote = -1;
             }
             if (hit.gameObject.CompareTag("MusicNote"))
             {
@@ -402,9 +405,9 @@ namespace StarterAssets
 
                 //trombone pops out the note it contained previously and stores the new note
                 GetComponent<PickupAndDepositMusicNote>().SummonMusicNote(trombone.containedMusicNoteValue);
+                GetComponent<PickupAndDepositMusicNote>().currentNote = -1;
                 trombone.PopOutAndStore(mn_note);
                 heldNote.SetActive(false);
-                GetComponent<PickupAndDepositMusicNote>().currentNote = -1;
             }
 
             if (hit.gameObject.CompareTag("Saxophone") && heldNote.activeInHierarchy)
@@ -415,13 +418,18 @@ namespace StarterAssets
 
                 //saxophone pops out the note it contained previously and stores the new note
                 GetComponent<PickupAndDepositMusicNote>().SummonMusicNote(saxophone.containedMusicNoteValue);
+                GetComponent<PickupAndDepositMusicNote>().currentNote = -1;
                 saxophone.PopOutAndStore(mn_note);
                 heldNote.SetActive(false);
-                GetComponent<PickupAndDepositMusicNote>().currentNote = -1;
             }
         }
 
-        private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
+        IEnumerator spacedOut()
+        {
+            yield return new WaitForSeconds(1);
+        }
+
+            private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
         {
             if (lfAngle < -360f) lfAngle += 360f;
             if (lfAngle > 360f) lfAngle -= 360f;
