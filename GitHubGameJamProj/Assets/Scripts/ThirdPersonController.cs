@@ -86,6 +86,7 @@ namespace StarterAssets
         private float _rotationVelocity;
         private float _verticalVelocity;
         private float _terminalVelocity = 53.0f;
+        private float pauseTimer = 0f;
 
         // timeout deltatime
         private float _jumpTimeoutDelta;
@@ -126,6 +127,9 @@ namespace StarterAssets
         public float TimpaniLaunchHeight; //subject to change based on Music Notes
         public GameObject heldNote;
 
+        [SerializeField]
+        private InputActionReference pauseRef;
+
         private void Awake()
         {
             // get a reference to our main camera
@@ -162,6 +166,12 @@ namespace StarterAssets
             JumpAndGravity();
             GroundedCheck();
             Move();
+
+            if (pauseRef.action.inProgress && Time.timeScale > 0.5f && pauseTimer > 0.5f){
+                pauseTimer = 0f;
+                FindObjectOfType<PauseBehavior>().PauseGame();
+            }
+            pauseTimer += Time.deltaTime;
         }
 
         private void LateUpdate()
@@ -195,6 +205,9 @@ namespace StarterAssets
 
         private void CameraRotation()
         {
+            if (Time.timeScale < 0.5f){
+                return;
+            }
             // if there is an input and camera position is not fixed
             if (_input.look.sqrMagnitude >= _threshold && !LockCameraPosition)
             {
@@ -449,7 +462,7 @@ namespace StarterAssets
                 if (FootstepAudioClips.Length > 0)
                 {
                     var index = Random.Range(0, FootstepAudioClips.Length);
-                    AudioSource.PlayClipAtPoint(FootstepAudioClips[index], transform.TransformPoint(_controller.center), FootstepAudioVolume);
+                    AudioSource.PlayClipAtPoint(FootstepAudioClips[index], transform.TransformPoint(_controller.center), FootstepAudioVolume*MusicPlayer.SFX_Volume);
                 }
             }
         }
@@ -458,7 +471,7 @@ namespace StarterAssets
         {
             if (animationEvent.animatorClipInfo.weight > 0.5f)
             {
-                AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
+                AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume*MusicPlayer.SFX_Volume);
             }
         }
     }

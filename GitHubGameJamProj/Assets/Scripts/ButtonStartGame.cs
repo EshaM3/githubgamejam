@@ -5,20 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class ButtonStartGame : MonoBehaviour
 {
-    [SerializeField] string nextSceneName;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public string nextSceneName;
+    public bool restartScene = false;
 
     public void StartGame(){
+        Time.timeScale = 1f;
+        if (restartScene){
+            nextSceneName = SceneManager.GetActiveScene().name;
+        }
         SceneManager.LoadScene(nextSceneName);
     }
 }

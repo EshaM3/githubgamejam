@@ -33,7 +33,7 @@ public class PickupAndDepositMusicNote : MonoBehaviour
         }
         heldNote.SetActive(true);
         currentNote = takenNote.note;
-        GetComponent<AudioSource>().PlayOneShot(takenNote.noteSfx[currentNote]);
+        GetComponent<AudioSource>().PlayOneShot(takenNote.noteSfx[currentNote],MusicPlayer.SFX_Volume);
         heldNote.GetComponent<MusicNote>().changeNote(currentNote);
         Destroy(takenNote.gameObject);
     }

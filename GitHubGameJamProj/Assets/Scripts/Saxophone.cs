@@ -80,6 +80,6 @@ public class Saxophone : MonoBehaviour
     }
 
     public void PlaySfx(){
-        GetComponent<AudioSource>().PlayOneShot(saxophoneSfx[containedMusicNoteValue]);
+        GetComponent<AudioSource>().PlayOneShot(saxophoneSfx[containedMusicNoteValue],MusicPlayer.SFX_Volume);
     }
 }
