@@ -12,6 +12,7 @@ public class LevelGoal : MonoBehaviour
 
     void Start(){
         anim = GetComponent<Animator>();
+        nextSceneName = FindObjectOfType<LevelOrder>().nextLevel(SceneManager.GetActiveScene().name);
     }
 
     void Update(){
@@ -36,6 +37,7 @@ public class LevelGoal : MonoBehaviour
     IEnumerator levelComplete()
     {
         anim.SetTrigger("Win");
+        GetComponent<AudioSource>().volume = MusicPlayer.SFX_Volume;
         GetComponent<AudioSource>().Play();
 
         yield return new WaitForSeconds(4.5f);

@@ -88,7 +88,7 @@ MonoBehaviour:
   m_Tilt: 30
   m_Pan: 0
   m_Dutch: 0
-  m_ZoomScale: 1
+  m_ZoomScale: 0.7
   m_FollowAttachment: 1
   m_LookAtAttachment: 1
 --- !u!1 &2070925442191277755

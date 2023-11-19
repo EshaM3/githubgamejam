@@ -23,6 +23,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level3H.unity
     guid: e3c33c66d9bfa4274881a174a383a531
+  - enabled: 1
+    path: Assets/Scenes/HowToPlay.unity
+    guid: 435383f46d8024be78fafe267ef2c5eb
+  - enabled: 1
+    path: Assets/Scenes/SelectLevel.unity
+    guid: a7ee1ada7a16c4da0960e05445284dea
+  - enabled: 1
+    path: Assets/Scenes/Options.unity
+    guid: d35316f6b1a824172bc18eb5ebe6b855
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: fe49884ceb0e34502a381336faa9d71a
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7,
       type: 2}

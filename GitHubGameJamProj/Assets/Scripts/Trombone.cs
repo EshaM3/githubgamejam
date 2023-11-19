@@ -62,7 +62,7 @@ public class Trombone : MonoBehaviour
     }
 
     public void PlaySfx(){
-        GetComponent<AudioSource>().PlayOneShot(tromboneSfx[containedMusicNoteValue]);
+        GetComponent<AudioSource>().PlayOneShot(tromboneSfx[containedMusicNoteValue], MusicPlayer.SFX_Volume);
     }
 
 }

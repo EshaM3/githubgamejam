@@ -43,6 +43,6 @@ public class Timpani : MonoBehaviour
     }
 
     public void PlaySfx(){
-        GetComponent<AudioSource>().PlayOneShot(timpaniSfx[containedMusicNoteValue]);
+        GetComponent<AudioSource>().PlayOneShot(timpaniSfx[containedMusicNoteValue],MusicPlayer.SFX_Volume);
     }
 }
