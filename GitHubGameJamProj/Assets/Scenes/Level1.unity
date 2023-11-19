@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.69803923, g: 0.6340523, b: 0.6282353, a: 1}
+  m_AmbientSkyColor: {r: 0.69803923, g: 0.6321569, b: 0.627451, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -420,15 +420,40 @@ PrefabInstance:
       propertyPath: m_Name
       value: Essentials
       objectReference: {fileID: 0}
+    - target: {fileID: 2719452010285384525, guid: d862bc49d05034f3297bbaffb46986dd,
+        type: 3}
+      propertyPath: nextSceneName
+      value: Level2H
+      objectReference: {fileID: 0}
     - target: {fileID: 2741977381616615785, guid: d862bc49d05034f3297bbaffb46986dd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.664757
+      objectReference: {fileID: 0}
+    - target: {fileID: 2741977381616615785, guid: d862bc49d05034f3297bbaffb46986dd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.9928093
+      objectReference: {fileID: 0}
+    - target: {fileID: 4550029044990636993, guid: d862bc49d05034f3297bbaffb46986dd,
         type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.664757
       objectReference: {fileID: 0}
     - target: {fileID: 4550029044990636993, guid: d862bc49d05034f3297bbaffb46986dd,
         type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.664757
+      propertyPath: m_LocalPosition.y
+      value: 5.9928093
+      objectReference: {fileID: 0}
+    - target: {fileID: 4550029044990636993, guid: d862bc49d05034f3297bbaffb46986dd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9659259
+      objectReference: {fileID: 0}
+    - target: {fileID: 4550029044990636993, guid: d862bc49d05034f3297bbaffb46986dd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.25881907
       objectReference: {fileID: 0}
     - target: {fileID: 7362328939880616075, guid: d862bc49d05034f3297bbaffb46986dd,
         type: 3}
