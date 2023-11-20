@@ -37,9 +37,6 @@ public class BackgroundElements : MonoBehaviour
         if (nameTotal % 13 == 0){
             possibleElements[6].SetActive(true);
         }
-        if (nameTotal % 17 == 0){
-            possibleElements[7].SetActive(true);
-        }
     }
 
     // Update is called once per frame
