@@ -159,5 +159,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Gravity: -15
-  lifeTimer: 5
+  lifeTimer: 7
   creator: {fileID: 0}
