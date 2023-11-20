@@ -12,7 +12,10 @@ public class LevelGoal : MonoBehaviour
 
     void Start(){
         anim = GetComponent<Animator>();
-        nextSceneName = FindObjectOfType<LevelOrder>().nextLevel(SceneManager.GetActiveScene().name);
+        LevelOrder levelOrder = FindObjectOfType<LevelOrder>();
+        if (levelOrder != null){
+            nextSceneName = levelOrder.nextLevel(SceneManager.GetActiveScene().name);
+        }
     }
 
     void Update(){

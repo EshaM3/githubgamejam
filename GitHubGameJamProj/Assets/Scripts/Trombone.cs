@@ -27,17 +27,22 @@ public class Trombone : MonoBehaviour
         currentTromboneMats = GetComponent<SkinnedMeshRenderer>().sharedMaterials;
         gap = xPos7 - xPos0;
         scaleGap = xScale7 - xScale0;
+        UpdateColor();
     }
 
     void Update()
     {
-        UpdateColor();
     }
 
     public void UpdateColor(){
-        
+        tromboneCollider.transform.localPosition = new Vector3(xPos0 + (gap * (containedMusicNoteValue / 7f)),
+            tromboneCollider.transform.localPosition.y, tromboneCollider.transform.localPosition.z);
+        tromboneCollider.transform.localScale = new Vector3(xScale0 + (scaleGap * (containedMusicNoteValue / 7f)),
+            tromboneCollider.transform.localScale.y, tromboneCollider.transform.localScale.z);
 
-        
+        GetComponent<SkinnedMeshRenderer>().SetBlendShapeWeight(0, 100f * containedMusicNoteValue / 7f);
+        currentTromboneMats[1] = tromboneMats[containedMusicNoteValue];
+        GetComponent<SkinnedMeshRenderer>().materials = currentTromboneMats;
     }
 
     public void PopOutAndStore(int newNote)
@@ -51,14 +56,7 @@ public class Trombone : MonoBehaviour
         //}
         containedMusicNoteValue = newNote;
         PlaySfx();
-        tromboneCollider.transform.localPosition = new Vector3(xPos0 + (gap * (containedMusicNoteValue / 7f)),
-            tromboneCollider.transform.localPosition.y, tromboneCollider.transform.localPosition.z);
-        tromboneCollider.transform.localScale = new Vector3(xScale0 + (scaleGap * (containedMusicNoteValue / 7f)),
-            tromboneCollider.transform.localScale.y, tromboneCollider.transform.localScale.z);
-
-        GetComponent<SkinnedMeshRenderer>().SetBlendShapeWeight(0, 100f * containedMusicNoteValue / 7f);
-        currentTromboneMats[1] = tromboneMats[containedMusicNoteValue];
-        GetComponent<SkinnedMeshRenderer>().materials = currentTromboneMats;
+        UpdateColor();
     }
 
     public void PlaySfx(){
