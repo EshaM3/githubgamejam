@@ -379,13 +379,10 @@ namespace StarterAssets
 
         private void OnControllerColliderHit(ControllerColliderHit hit)
         {
-            //StopAllCoroutines();
             if (!playerHitObject && !hit.gameObject.CompareTag("Surroundings"))
             {
                 StartCoroutine(Collided(hit.gameObject));
-            }
-            //GameObject hitObject = hit.gameObject;
-            
+            } 
         }
 
         IEnumerator Collided(GameObject hitObject)
