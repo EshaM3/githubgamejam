@@ -27,9 +27,9 @@ public class RaspberryBounce : MonoBehaviour
             Rigidbody rb = GetComponent<Rigidbody>();
         if (collision.gameObject.CompareTag("TimpaniSurface"))
         {
-            float TimpaniLaunchHeight = collision.transform.parent.gameObject.GetComponent<Timpani>().timpaniForce;
-            rb.velocity = new Vector3(rb.velocity.x, Mathf.Sqrt(TimpaniLaunchHeight * -2f * Gravity), rb.velocity.z);
-            collision.transform.parent.gameObject.GetComponent<Timpani>().PlaySfx();
+            float TimpaniLaunchHeight = collision.transform.parent.gameObject.GetComponent<Timpani>().StartBounce();
+            rb.velocity = new Vector3(rb.velocity.x, TimpaniLaunchHeight, rb.velocity.z);
+            //collision.transform.parent.gameObject.GetComponent<Timpani>().PlaySfx();
         } else {
             //rb.velocity *= 0.15f;
         }

@@ -381,9 +381,12 @@ namespace StarterAssets
             StartCoroutine(spacedOut());
             if (hit.gameObject.CompareTag("TimpaniSurface"))
             {
-                TimpaniLaunchHeight = hit.transform.parent.gameObject.GetComponent<Timpani>().timpaniForce;
-                _verticalVelocity = Mathf.Sqrt(TimpaniLaunchHeight * -2f * Gravity);
-                hit.transform.parent.gameObject.GetComponent<Timpani>().PlaySfx();
+                //TimpaniLaunchHeight = hit.transform.parent.gameObject.GetComponent<Timpani>().timpaniForce;
+                _verticalVelocity = hit.transform.parent.gameObject.GetComponent<Timpani>().StartBounce();
+                //Debug.Log("vertical velocity A: " + _verticalVelocity);
+                //_verticalVelocity = Mathf.Sqrt(TimpaniLaunchHeight * -2f * Gravity);
+                //Debug.Log("vertical velocity B: " + _verticalVelocity);
+                //hit.transform.parent.gameObject.GetComponent<Timpani>().PlaySfx();
 
                 // update animator if using character - this mechanic uses the jump animation
                 if (_hasAnimator)

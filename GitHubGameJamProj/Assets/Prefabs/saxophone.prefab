@@ -117,7 +117,9 @@ SkinnedMeshRenderer:
   m_SkinnedMotionVectors: 1
   m_Mesh: {fileID: -1963521994490203869, guid: aee0873b5b6e84a508e4c7f01002ad65, type: 3}
   m_Bones: []
-  m_BlendShapeWeights: []
+  m_BlendShapeWeights:
+  - 0
+  - 0
   m_RootBone: {fileID: 0}
   m_AABB:
     m_Center: {x: -0.0004942254, y: 0.0000000013969839, z: 0.00020944094}

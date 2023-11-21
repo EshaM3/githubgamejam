@@ -16,10 +16,12 @@ public class Saxophone : MonoBehaviour
     public int containedMusicNoteValue = 0;
     float amountRotated = 0f;
     public float verticalRotation;
+    SkinnedMeshRenderer skinnedMesh;
 
     // Start is called before the first frame update
     void Start()
     {
+        skinnedMesh = GetComponent<SkinnedMeshRenderer>();
         StartCoroutine(spacedOut());
     }
 
@@ -49,12 +51,41 @@ public class Saxophone : MonoBehaviour
 
         //saxophone color changes based on note
         currentSaxophoneMats[1] = saxophoneMats[containedMusicNoteValue];
-        GetComponent<SkinnedMeshRenderer>().materials = currentSaxophoneMats;
+        if (skinnedMesh == null){
+            skinnedMesh = GetComponent<SkinnedMeshRenderer>();
+        }
+        skinnedMesh.materials = currentSaxophoneMats;
     }
 
     IEnumerator spacedOut()
     {
-        yield return new WaitForSeconds(2);
+        if (skinnedMesh == null){
+            skinnedMesh = GetComponent<SkinnedMeshRenderer>();
+        }
+
+        yield return new WaitForSeconds(0.2f);
+
+        if (skinnedMesh.GetBlendShapeWeight(0) > 0f){
+            skinnedMesh.SetBlendShapeWeight(0,67f);
+        }
+        yield return new WaitForSeconds(0.1f);
+
+        skinnedMesh.SetBlendShapeWeight(0,0f);
+        yield return new WaitForSeconds(1.2f);
+
+        skinnedMesh.SetBlendShapeWeight(1,33f);
+        yield return new WaitForSeconds(0.1f);
+
+        skinnedMesh.SetBlendShapeWeight(1,100f);
+        yield return new WaitForSeconds(0.3f);
+
+        skinnedMesh.SetBlendShapeWeight(1,67f);
+        skinnedMesh.SetBlendShapeWeight(0,33f);
+        yield return new WaitForSeconds(0.1f);
+
+        skinnedMesh.SetBlendShapeWeight(1,0f);
+        skinnedMesh.SetBlendShapeWeight(0,100f);
+
         PlaySfx();
         var rasp = Instantiate(raspberry, launchPoint.position, raspberry.transform.rotation);
         /*rasp.gameObject.GetComponent<Rigidbody>().velocity = rasp.gameObject.GetComponent<Rigidbody>().velocity +

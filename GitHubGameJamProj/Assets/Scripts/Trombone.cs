@@ -20,6 +20,9 @@ public class Trombone : MonoBehaviour
     float gap;
     float scaleGap;
 
+    SkinnedMeshRenderer skinnedMesh;
+    float targetBlend = 0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +35,22 @@ public class Trombone : MonoBehaviour
 
     void Update()
     {
+        AnimateSlide();
+    }
+
+    public void AnimateSlide(){
+        if (skinnedMesh == null){
+            skinnedMesh = GetComponent<SkinnedMeshRenderer>();
+        }
+
+        float currentBlend = skinnedMesh.GetBlendShapeWeight(0);
+        float offset = 200f*Time.deltaTime;
+        if (currentBlend > targetBlend + offset){
+            currentBlend -= offset;
+        } else if (currentBlend < targetBlend - offset){
+            currentBlend += offset;
+        }
+        skinnedMesh.SetBlendShapeWeight(0, currentBlend);
     }
 
     public void UpdateColor(){
@@ -40,9 +59,11 @@ public class Trombone : MonoBehaviour
         tromboneCollider.transform.localScale = new Vector3(xScale0 + (scaleGap * (containedMusicNoteValue / 7f)),
             tromboneCollider.transform.localScale.y, tromboneCollider.transform.localScale.z);
 
-        GetComponent<SkinnedMeshRenderer>().SetBlendShapeWeight(0, 100f * containedMusicNoteValue / 7f);
+        targetBlend = 100f * containedMusicNoteValue / 7f;
+        AnimateSlide();
+
         currentTromboneMats[1] = tromboneMats[containedMusicNoteValue];
-        GetComponent<SkinnedMeshRenderer>().materials = currentTromboneMats;
+        skinnedMesh.materials = currentTromboneMats;
     }
 
     public void PopOutAndStore(int newNote)
