@@ -128,6 +128,7 @@ namespace StarterAssets
         //GameJamAdditions
         public float TimpaniLaunchHeight; //subject to change based on Music Notes
         public GameObject heldNote;
+        private bool playerHitObject;
 
         [SerializeField]
         private InputActionReference pauseRef;
@@ -378,11 +379,21 @@ namespace StarterAssets
 
         private void OnControllerColliderHit(ControllerColliderHit hit)
         {
-            StartCoroutine(spacedOut());
-            if (hit.gameObject.CompareTag("TimpaniSurface"))
+            //StopAllCoroutines();
+            if (!playerHitObject && !hit.gameObject.CompareTag("Surroundings"))
+            {
+                StartCoroutine(Collided(hit.gameObject));
+            }
+            //GameObject hitObject = hit.gameObject;
+            
+        }
+
+        IEnumerator Collided(GameObject hitObject)
+        {
+            if (hitObject.CompareTag("TimpaniSurface"))
             {
                 //TimpaniLaunchHeight = hit.transform.parent.gameObject.GetComponent<Timpani>().timpaniForce;
-                _verticalVelocity = hit.transform.parent.gameObject.GetComponent<Timpani>().StartBounce();
+                _verticalVelocity = hitObject.transform.parent.gameObject.GetComponent<Timpani>().StartBounce();
                 //Debug.Log("vertical velocity A: " + _verticalVelocity);
                 //_verticalVelocity = Mathf.Sqrt(TimpaniLaunchHeight * -2f * Gravity);
                 //Debug.Log("vertical velocity B: " + _verticalVelocity);
@@ -394,10 +405,11 @@ namespace StarterAssets
                     _animator.SetBool(_animIDJump, true);
                 }
             }
-            else if (hit.gameObject.CompareTag("Timpani") && heldNote.activeInHierarchy)
+            else if (hitObject.CompareTag("Timpani") && heldNote.activeInHierarchy)
             {
+                playerHitObject = true;
                 //changes timpani color based on note
-                Timpani timpani = hit.gameObject.GetComponent<Timpani>();
+                Timpani timpani = hitObject.GetComponent<Timpani>();
                 int mn_note = heldNote.GetComponent<MusicNote>().note;
 
                 //timpani pops out the note it contained previously and stores the new note
@@ -406,15 +418,17 @@ namespace StarterAssets
                 timpani.PopOutAndStore(mn_note);
                 heldNote.SetActive(false);
             }
-            if (hit.gameObject.CompareTag("MusicNote"))
+            else if (hitObject.CompareTag("MusicNote"))
             {
-                MusicNote mn = hit.gameObject.GetComponent<MusicNote>();
+                playerHitObject = true;
+                MusicNote mn = hitObject.GetComponent<MusicNote>();
                 GetComponent<PickupAndDepositMusicNote>().CollideWithNote(mn);
             }
-            if (hit.gameObject.CompareTag("Trombone") && heldNote.activeInHierarchy)
+            else if (hitObject.CompareTag("Trombone") && heldNote.activeInHierarchy)
             {
+                playerHitObject = true;
                 //changes trombone length based on note
-                Trombone trombone = hit.gameObject.GetComponent<Trombone>();
+                Trombone trombone = hitObject.GetComponent<Trombone>();
                 int mn_note = heldNote.GetComponent<MusicNote>().note;
 
                 //trombone color changes based on note
@@ -426,10 +440,11 @@ namespace StarterAssets
                 heldNote.SetActive(false);
             }
 
-            if (hit.gameObject.CompareTag("Saxophone") && heldNote.activeInHierarchy)
+            else if (hitObject.CompareTag("Saxophone") && heldNote.activeInHierarchy)
             {
+                playerHitObject = true;
                 //changing saxophone angle based on note
-                Saxophone saxophone = hit.gameObject.GetComponent<Saxophone>();
+                Saxophone saxophone = hitObject.GetComponent<Saxophone>();
                 int mn_note = heldNote.GetComponent<MusicNote>().note;
 
                 //saxophone pops out the note it contained previously and stores the new note
@@ -438,11 +453,10 @@ namespace StarterAssets
                 saxophone.PopOutAndStore(mn_note);
                 heldNote.SetActive(false);
             }
-        }
-
-        IEnumerator spacedOut()
-        {
+            
             yield return new WaitForSeconds(1);
+
+            playerHitObject = false;
         }
 
             private static float ClampAngle(float lfAngle, float lfMin, float lfMax)

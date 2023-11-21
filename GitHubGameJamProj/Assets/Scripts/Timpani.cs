@@ -40,7 +40,7 @@ public class Timpani : MonoBehaviour
     public void AnimateBounce(){
         float offset = 600f*Time.deltaTime;
 
-        Debug.Log("Bouncing Status - AMP: " + bounceAmp + ", DIR: " + bounceDir + ", BLEND0: " + skinnedMesh.GetBlendShapeWeight(0) + ", BLEND1: " + skinnedMesh.GetBlendShapeWeight(1));
+        //Debug.Log("Bouncing Status - AMP: " + bounceAmp + ", DIR: " + bounceDir + ", BLEND0: " + skinnedMesh.GetBlendShapeWeight(0) + ", BLEND1: " + skinnedMesh.GetBlendShapeWeight(1));
 
         if (bounceAmp < 5f){
             bounceAmp = 0f;
