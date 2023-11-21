@@ -815,9 +815,9 @@ GameObject:
   - component: {fileID: 2674997263915067647}
   - component: {fileID: 1104012093815574999}
   - component: {fileID: 1123821228}
-  - component: {fileID: 1123821227}
   - component: {fileID: 6245683648358951628}
   - component: {fileID: 7959501116243327585}
+  - component: {fileID: 3969993331646161114}
   m_Layer: 0
   m_Name: Ballerina
   m_TagString: Untagged
@@ -877,19 +877,6 @@ CapsuleCollider:
   m_Height: 2.6936646
   m_Direction: 1
   m_Center: {x: 0, y: 0.8468323, z: 0}
---- !u!114 &1123821227
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3338486162854310469}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adb85fad1695b4026bbe8cdc1b7569d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nextSceneName: Title
 --- !u!114 &6245683648358951628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1000,6 +987,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3969993331646161114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3338486162854310469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adb85fad1695b4026bbe8cdc1b7569d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextSceneName: Title
 --- !u!1 &3440014705866560029
 GameObject:
   m_ObjectHideFlags: 0

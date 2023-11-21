@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class LevelGoal : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class LevelGoal : MonoBehaviour
     float rotateSpeed = -20f;
     private Animator anim;
     private bool startedWinning = false;
+    private PlayerInput playerInput;
 
     void Start(){
         anim = GetComponent<Animator>();
@@ -32,6 +34,7 @@ public class LevelGoal : MonoBehaviour
         {
             //Debug.Log("Colliding With Player!");
             if (!startedWinning){
+                playerInput = other.gameObject.GetComponent<PlayerInput>();
                 startedWinning = true;
                 StartCoroutine(levelComplete());
             }
@@ -39,12 +42,14 @@ public class LevelGoal : MonoBehaviour
     }
     IEnumerator levelComplete()
     {
+        playerInput.DeactivateInput();
         anim.SetTrigger("Win");
         GetComponent<AudioSource>().volume = MusicPlayer.SFX_Volume;
         GetComponent<AudioSource>().Play();
 
-        yield return new WaitForSeconds(4.5f);
+        yield return new WaitForSecondsRealtime(2.5f);
 
+        playerInput.ActivateInput();
         SceneManager.LoadScene(nextSceneName);
     }
 }
