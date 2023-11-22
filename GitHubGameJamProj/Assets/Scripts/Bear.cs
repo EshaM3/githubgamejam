@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Animations;
+//using UnityEditor.Animations;  - was creating build conflicts
 using UnityEngine;
 
 public class Bear : MonoBehaviour
