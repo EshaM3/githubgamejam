@@ -12,10 +12,14 @@ public class VolumeControl : MonoBehaviour
     }
 
     public void SetSFXVolume(float newVolume){
-        musicPlayer.SetSFXVolume(newVolume);
+        if (musicPlayer != null){
+            musicPlayer.SetSFXVolume(newVolume);
+        }
     }
 
     public void SetMusicVolume(float newVolume){
-        musicPlayer.GetComponent<AudioSource>().volume = newVolume;
+        if (musicPlayer != null){
+            musicPlayer.GetComponent<AudioSource>().volume = newVolume;
+        }
     }
 }
