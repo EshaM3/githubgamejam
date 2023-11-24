@@ -2,44 +2,44 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Timpani : MonoBehaviour
+public class Harp : MonoBehaviour
 {
-    //these values will change based on music note brought to it
-    public Material[] timpaniMats;
-    public Material[] currentTimpaniMats;
-    public AudioClip[] timpaniSfx;
-    public float timpaniForce;
+    public Material[] harpMats;
+    public Material[] currentHarpMats;
+    public AudioClip[] harpSfx;
+    public float bounceForce;
     public GameObject containedMusicNote;
     public int containedMusicNoteValue = 0;
 
     SkinnedMeshRenderer skinnedMesh;
     float bounceAmp = 0f;
     bool bounceDir = true;
-
-    private void Start()
+    // Start is called before the first frame update
+    void Start()
     {
         skinnedMesh = GetComponent<SkinnedMeshRenderer>();
     }
 
-    private void Update(){
+    // Update is called once per frame
+    void Update()
+    {
         AnimateBounce();
+        UpdateColor();
     }
 
     public void UpdateColor(){
         if (skinnedMesh == null){
             skinnedMesh = GetComponent<SkinnedMeshRenderer>();
         }
-        
-        currentTimpaniMats = skinnedMesh.sharedMaterials;
-        currentTimpaniMats[0] = timpaniMats[containedMusicNoteValue];
-        skinnedMesh.materials = currentTimpaniMats;
+        currentHarpMats = skinnedMesh.sharedMaterials;
+        currentHarpMats[1] = harpMats[containedMusicNoteValue];
+        skinnedMesh.materials = currentHarpMats;
 
-        //changes timpani bounce "force" based on note
-        timpaniForce = (containedMusicNoteValue + 1) * 0.5f;
+        transform.rotation = Quaternion.Euler(-90f, containedMusicNoteValue*90f/7f, 0f);
     }
 
     public void AnimateBounce(){
-        float offset = 600f*Time.deltaTime;
+        float offset = 800f*Time.deltaTime;
 
         //Debug.Log("Bouncing Status - AMP: " + bounceAmp + ", DIR: " + bounceDir + ", BLEND0: " + skinnedMesh.GetBlendShapeWeight(0) + ", BLEND1: " + skinnedMesh.GetBlendShapeWeight(1));
 
@@ -84,13 +84,18 @@ public class Timpani : MonoBehaviour
     }
 
     public void PlaySfx(){
-        GetComponent<AudioSource>().PlayOneShot(timpaniSfx[containedMusicNoteValue],MusicPlayer.SFX_Volume);
+        GetComponent<AudioSource>().PlayOneShot(harpSfx[containedMusicNoteValue],MusicPlayer.SFX_Volume);
     }
 
-    public float StartBounce(){
+    public Vector3 StartBounce(Vector3 direction){
         PlaySfx();
-        bounceDir = true;
-        bounceAmp = 100f * (containedMusicNoteValue+1f) / 8f;
-        return Mathf.Sqrt(timpaniForce * 30f);
+        Debug.Log(direction.normalized + " ===== " + transform.up + " ===== " + Vector3.Angle(direction,transform.up));
+        if (Vector3.Angle(direction,transform.up) < 90f){
+            bounceDir = false;
+        } else {
+            bounceDir = true;
+        }
+        bounceAmp = 100f;
+        return Mathf.Sqrt(bounceForce * 30f)*direction.normalized;
     }
 }

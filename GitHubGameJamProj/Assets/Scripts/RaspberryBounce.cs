@@ -30,7 +30,11 @@ public class RaspberryBounce : MonoBehaviour
             float TimpaniLaunchHeight = collision.transform.parent.gameObject.GetComponent<Timpani>().StartBounce();
             rb.velocity = new Vector3(rb.velocity.x, TimpaniLaunchHeight, rb.velocity.z);
             //collision.transform.parent.gameObject.GetComponent<Timpani>().PlaySfx();
-        } else {
+        } else if (collision.gameObject.CompareTag("HarpBounce"))
+        {
+            rb.velocity = collision.transform.parent.gameObject.GetComponent<Harp>().StartBounce(collision.transform.up);
+            //collision.transform.parent.gameObject.GetComponent<Timpani>().PlaySfx();
+        }else {
             //rb.velocity *= 0.15f;
         }
     }

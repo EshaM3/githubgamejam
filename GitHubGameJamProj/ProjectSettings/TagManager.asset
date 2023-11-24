@@ -12,6 +12,8 @@ TagManager:
   - Raspberry
   - Saxophone
   - Surroundings
+  - HarpBounce
+  - Harp
   layers:
   - Default
   - TransparentFX

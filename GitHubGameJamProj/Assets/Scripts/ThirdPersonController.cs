@@ -129,6 +129,9 @@ namespace StarterAssets
         public float TimpaniLaunchHeight; //subject to change based on Music Notes
         public GameObject heldNote;
         private bool playerHitObject;
+        Vector3 harpBounce;
+        bool harpBouncing = false;
+        float harpBounceTimeTracker = 0f;
 
         [SerializeField]
         private InputActionReference pauseRef;
@@ -166,9 +169,20 @@ namespace StarterAssets
         {
             _hasAnimator = TryGetComponent(out _animator);
 
-            JumpAndGravity();
-            GroundedCheck();
-            Move();
+            if (harpBouncing){
+                Debug.Log("harp bouncing: " + harpBounce);
+                //transform.position += harpBounce;
+                _controller.Move(harpBounce*Time.deltaTime);
+                harpBounceTimeTracker -= Time.deltaTime;
+                if (harpBounceTimeTracker <= 0f){
+                    _animator.SetBool(_animIDJump, false);
+                    harpBouncing = false;
+                }
+            } else {
+                JumpAndGravity();
+                GroundedCheck();
+                Move();
+            }
 
             if (pauseRef.action.inProgress && Time.timeScale > 0.5f && pauseTimer > 0.5f){
                 pauseTimer = 0f;
@@ -401,6 +415,24 @@ namespace StarterAssets
                 {
                     _animator.SetBool(_animIDJump, true);
                 }
+            } else if (hitObject.CompareTag("HarpBounce"))
+            {
+                harpBounce = hitObject.transform.parent.gameObject.GetComponent<Harp>().StartBounce(hitObject.transform.up)*4f;
+                harpBounceTimeTracker = 0.3f;
+                //Debug.Log("Harp Bounce: " + harpBounce);
+                harpBouncing = true;
+                //TimpaniLaunchHeight = hit.transform.parent.gameObject.GetComponent<Timpani>().timpaniForce;
+                //_verticalVelocity = hitObject.transform.parent.gameObject.GetComponent<Timpani>().StartBounce();
+                //Debug.Log("vertical velocity A: " + _verticalVelocity);
+                //_verticalVelocity = Mathf.Sqrt(TimpaniLaunchHeight * -2f * Gravity);
+                //Debug.Log("vertical velocity B: " + _verticalVelocity);
+                //hit.transform.parent.gameObject.GetComponent<Timpani>().PlaySfx();
+
+                // update animator if using character - this mechanic uses the jump animation
+                if (_hasAnimator)
+                {
+                    _animator.SetBool(_animIDJump, true);
+                }
             }
             else if (hitObject.CompareTag("Timpani") && heldNote.activeInHierarchy)
             {
@@ -413,6 +445,19 @@ namespace StarterAssets
                 GetComponent<PickupAndDepositMusicNote>().SummonMusicNote(timpani.containedMusicNoteValue);
                 GetComponent<PickupAndDepositMusicNote>().currentNote = -1;
                 timpani.PopOutAndStore(mn_note);
+                heldNote.SetActive(false);
+            }
+            else if (hitObject.CompareTag("Harp") && heldNote.activeInHierarchy)
+            {
+                playerHitObject = true;
+                //changes timpani color based on note
+                Harp harp = hitObject.GetComponent<Harp>();
+                int mn_note = heldNote.GetComponent<MusicNote>().note;
+
+                //timpani pops out the note it contained previously and stores the new note
+                GetComponent<PickupAndDepositMusicNote>().SummonMusicNote(harp.containedMusicNoteValue);
+                GetComponent<PickupAndDepositMusicNote>().currentNote = -1;
+                harp.PopOutAndStore(mn_note);
                 heldNote.SetActive(false);
             }
             else if (hitObject.CompareTag("MusicNote"))
