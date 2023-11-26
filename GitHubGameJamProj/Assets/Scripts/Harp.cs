@@ -35,7 +35,7 @@ public class Harp : MonoBehaviour
         currentHarpMats[1] = harpMats[containedMusicNoteValue];
         skinnedMesh.materials = currentHarpMats;
 
-        transform.rotation = Quaternion.Euler(-90f, containedMusicNoteValue*90f/7f, 0f);
+        transform.rotation = Quaternion.Euler(-90f, containedMusicNoteValue*180f/8f, 0f);
     }
 
     public void AnimateBounce(){
