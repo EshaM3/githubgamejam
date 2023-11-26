@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class CameraController : MonoBehaviour
 {
     public GameObject player, cameraArm, cameraObj, highPoint, lowPoint;
     public float orbit, tilt, zoom, followSpeed, centerInfluence, orbitSpeed, tiltSpeed, zoomSpeed;
+    public Volume dofVolume;
 
     [SerializeField]
     private InputActionReference lookRef, scrollRef;
@@ -21,6 +24,7 @@ public class CameraController : MonoBehaviour
     {
         ControlCamera();
         UpdateCamera();
+        ModifyDepthOfField();
     }
 
     public void ControlCamera(){
@@ -64,6 +68,23 @@ public class CameraController : MonoBehaviour
             } else {
                 transform.position += (pivot-transform.position).normalized*follow;
             }
+        }
+    }
+
+    void ModifyDepthOfField(){
+        if (dofVolume != null){
+            float cameraDist = (transform.position-cameraObj.transform.position).magnitude;
+            VolumeProfile profile = dofVolume.sharedProfile;
+            if (profile.TryGet<DepthOfField>(out var dof)){
+                float myFocalDist = cameraDist*0.4938f + 0.1111f;
+                dof.focusDistance.value = myFocalDist;
+                dof.focusDistance.overrideState = true;
+
+                float myFocalLength = cameraDist*5.3704f + 43.3333f;
+                dof.focalLength.value = myFocalLength;
+                dof.focalLength.overrideState = true;
+            }
+            Debug.Log(cameraDist);
         }
     }
 }

@@ -391,6 +391,7 @@ Transform:
   - {fileID: 1782095265330292218}
   - {fileID: 5688961609542416728}
   - {fileID: 4788227932818004498}
+  - {fileID: 6440352631966344261}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3366,6 +3367,55 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &8635707168979909757
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6440352631966344261}
+  - component: {fileID: 2196076414786741499}
+  m_Layer: 0
+  m_Name: Global Volume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6440352631966344261
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8635707168979909757}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.3688035, y: -2.1163604, z: 1.2232459}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8075934264368638941}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2196076414786741499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8635707168979909757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 1fb7c3404af7648bcb954ca62ada4388, type: 2}
 --- !u!1 &8805195585217354093
 GameObject:
   m_ObjectHideFlags: 0
@@ -4063,6 +4113,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 7883533028446292529}
+    - target: {fileID: 7260720190629537981, guid: e4745f9b0f7af4b379dc087754ee08d1,
+        type: 3}
+      propertyPath: dofVolume
+      value: 
+      objectReference: {fileID: 2196076414786741499}
     - target: {fileID: 7260720190629537981, guid: e4745f9b0f7af4b379dc087754ee08d1,
         type: 3}
       propertyPath: centerInfluence
