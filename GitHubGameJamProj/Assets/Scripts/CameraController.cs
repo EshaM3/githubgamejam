@@ -8,9 +8,10 @@ using UnityEngine.Rendering.Universal;
 public class CameraController : MonoBehaviour
 {
     public GameObject player, cameraArm, cameraObj, highPoint, lowPoint;
-    public float orbit, tilt, zoom, followSpeed, centerInfluence, orbitSpeed, tiltSpeed, zoomSpeed, distPoint1, focusDist1, focalLength1, distPoint2, focusDist2, focalLength2;
+    public float orbit, tilt, zoom, followSpeed, centerInfluence, orbitSpeed, tiltSpeed, zoomSpeed;
+    [SerializeField]
+    public DepthOfFieldPoint[] depthOfFieldPoints;
     public Volume dofVolume;
-    private float focusDistSlope, focusDistInt, focalLengthSlope, focalLengthInt;
 
     [SerializeField]
     private InputActionReference lookRef, scrollRef;
@@ -18,12 +19,26 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         ShiftPosition(cameraObj.transform.localPosition.z, 100f);
+    }
 
-        focusDistSlope = (focusDist2-focusDist1)/(distPoint2-distPoint1);
-        focusDistInt = focusDist2 - (focusDistSlope*distPoint2);
+    public float[] CalculateFocus(float cameraDist){
+        float[] points = new float[2];
 
-        focalLengthSlope = (focalLength2-focalLength1)/(distPoint2-distPoint1);
-        focalLengthInt = focalLength2 - (focalLengthSlope*distPoint2);
+        DepthOfFieldPoint minPoint = depthOfFieldPoints[depthOfFieldPoints.Length-2];
+        DepthOfFieldPoint maxPoint = depthOfFieldPoints[depthOfFieldPoints.Length-1];
+        for (int i = 1; i < depthOfFieldPoints.Length; i++){
+            if (depthOfFieldPoints[i].cameraDist >= cameraDist){
+                minPoint = depthOfFieldPoints[i-1];
+                maxPoint = depthOfFieldPoints[i];
+                break;
+            }
+        }
+
+        float percent = (cameraDist-minPoint.cameraDist)/(maxPoint.cameraDist-minPoint.cameraDist);
+        points[0] = minPoint.focusDist+((maxPoint.focusDist-minPoint.focusDist)*percent);
+        points[1] = minPoint.focalLength+((maxPoint.focalLength-minPoint.focalLength)*percent);
+
+        return points;
     }
 
     // Update is called once per frame
@@ -83,15 +98,28 @@ public class CameraController : MonoBehaviour
             float cameraDist = (transform.position-cameraObj.transform.position).magnitude;
             VolumeProfile profile = dofVolume.sharedProfile;
             if (profile.TryGet<DepthOfField>(out var dof)){
-                float myFocalDist = cameraDist*focusDistSlope + focusDistInt;
+                float[] focusPoints = CalculateFocus(cameraDist);
+                float myFocalDist = focusPoints[0];
                 dof.focusDistance.value = myFocalDist;
                 dof.focusDistance.overrideState = true;
 
-                float myFocalLength = cameraDist*focalLengthSlope + focalLengthInt;
+                float myFocalLength = focusPoints[1];
                 dof.focalLength.value = myFocalLength;
                 dof.focalLength.overrideState = true;
+
+                //Debug.Log(cameraDist + ", " + focusPoints[0] + ", " + focusPoints[1]);
             }
-            Debug.Log(cameraDist);
         }
+    }
+}
+
+[System.Serializable] 
+public class DepthOfFieldPoint{
+    public float cameraDist, focusDist, focalLength;
+
+    public DepthOfFieldPoint(float cameraDist, float focusDist, float focalLength){
+        this.cameraDist = cameraDist;
+        this.focusDist = focusDist;
+        this.focalLength = focalLength;
     }
 }
