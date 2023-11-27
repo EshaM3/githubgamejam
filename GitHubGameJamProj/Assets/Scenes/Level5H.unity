@@ -470,6 +470,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Essentials
       objectReference: {fileID: 0}
+    - target: {fileID: 7362328939880616075, guid: d862bc49d05034f3297bbaffb46986dd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 7362328939880616075, guid: d862bc49d05034f3297bbaffb46986dd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.92
+      objectReference: {fileID: 0}
     - target: {fileID: 8075934264368638941, guid: d862bc49d05034f3297bbaffb46986dd,
         type: 3}
       propertyPath: m_RootOrder

@@ -272,6 +272,13 @@ MonoBehaviour:
   orbitSpeed: 1.5
   tiltSpeed: 1
   zoomSpeed: 1
+  distPoint1: 1.8
+  focusDist1: 0.5
+  focalLength1: 30
+  distPoint2: 6.5
+  focusDist2: 5
+  focalLength2: 95
+  dofVolume: {fileID: 0}
   lookRef: {fileID: -3787169064211337688, guid: 4419d82f33d36e848b3ed5af4c8da37e,
     type: 3}
   scrollRef: {fileID: -5194496702378433488, guid: 4419d82f33d36e848b3ed5af4c8da37e,

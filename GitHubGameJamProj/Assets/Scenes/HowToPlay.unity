@@ -464,6 +464,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextSceneName: Title
+  restartScene: 0
 --- !u!1 &1150518683
 GameObject:
   m_ObjectHideFlags: 0
@@ -1051,8 +1052,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -50, y: -50}
+  m_AnchoredPosition: {x: -5, y: 0}
+  m_SizeDelta: {x: -60, y: -50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1700157950
 MonoBehaviour:
@@ -1087,7 +1088,10 @@ MonoBehaviour:
 
     Mouse: Camera
 
-    Shift: Run
+    Scroll Wheel: Zoom
+
+    Shift:
+    Run
 
     Enter: Pause'
   m_isRightToLeft: 0
@@ -1117,8 +1121,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 56
-  m_fontSizeBase: 56
+  m_fontSize: 55
+  m_fontSizeBase: 55
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

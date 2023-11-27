@@ -8,8 +8,9 @@ using UnityEngine.Rendering.Universal;
 public class CameraController : MonoBehaviour
 {
     public GameObject player, cameraArm, cameraObj, highPoint, lowPoint;
-    public float orbit, tilt, zoom, followSpeed, centerInfluence, orbitSpeed, tiltSpeed, zoomSpeed;
+    public float orbit, tilt, zoom, followSpeed, centerInfluence, orbitSpeed, tiltSpeed, zoomSpeed, distPoint1, focusDist1, focalLength1, distPoint2, focusDist2, focalLength2;
     public Volume dofVolume;
+    private float focusDistSlope, focusDistInt, focalLengthSlope, focalLengthInt;
 
     [SerializeField]
     private InputActionReference lookRef, scrollRef;
@@ -17,6 +18,12 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         ShiftPosition(cameraObj.transform.localPosition.z, 100f);
+
+        focusDistSlope = (focusDist2-focusDist1)/(distPoint2-distPoint1);
+        focusDistInt = focusDist2 - (focusDistSlope*distPoint2);
+
+        focalLengthSlope = (focalLength2-focalLength1)/(distPoint2-distPoint1);
+        focalLengthInt = focalLength2 - (focalLengthSlope*distPoint2);
     }
 
     // Update is called once per frame
@@ -76,15 +83,15 @@ public class CameraController : MonoBehaviour
             float cameraDist = (transform.position-cameraObj.transform.position).magnitude;
             VolumeProfile profile = dofVolume.sharedProfile;
             if (profile.TryGet<DepthOfField>(out var dof)){
-                float myFocalDist = cameraDist*0.4938f + 0.1111f;
+                float myFocalDist = cameraDist*focusDistSlope + focusDistInt;
                 dof.focusDistance.value = myFocalDist;
                 dof.focusDistance.overrideState = true;
 
-                float myFocalLength = cameraDist*5.3704f + 43.3333f;
+                float myFocalLength = cameraDist*focalLengthSlope + focalLengthInt;
                 dof.focalLength.value = myFocalLength;
                 dof.focalLength.overrideState = true;
             }
-            //Debug.Log(cameraDist);
+            Debug.Log(cameraDist);
         }
     }
 }
