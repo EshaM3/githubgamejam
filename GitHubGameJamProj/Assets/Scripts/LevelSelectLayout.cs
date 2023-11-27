@@ -37,12 +37,22 @@ public class LevelSelectLayout : MonoBehaviour
             go.GetComponent<RectTransform>().anchoredPosition = new Vector2(xLevel, yLevel);
             go.GetComponent<ButtonStartGame>().nextSceneName = lo.levels[i];
             go.GetComponentInChildren<TextMeshProUGUI>().text = ""+(i+1);
+
+            if (!lo.IsCoinCollected(i)){
+                Transform coinIcon = FindWithTag(go.transform,"Coin");
+                if (coinIcon != null){
+                    coinIcon.gameObject.SetActive(false);
+                }
+            }
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    Transform FindWithTag(Transform root, string tag)
     {
-        
+        foreach (Transform t in root.GetComponentsInChildren<Transform>())
+        {
+            if (t.CompareTag(tag)) return t;
+        }
+        return null;
     }
 }

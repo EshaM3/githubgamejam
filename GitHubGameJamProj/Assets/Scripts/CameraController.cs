@@ -84,7 +84,7 @@ public class CameraController : MonoBehaviour
                 dof.focalLength.value = myFocalLength;
                 dof.focalLength.overrideState = true;
             }
-            Debug.Log(cameraDist);
+            //Debug.Log(cameraDist);
         }
     }
 }

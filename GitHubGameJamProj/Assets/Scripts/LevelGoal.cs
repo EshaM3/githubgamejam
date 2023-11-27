@@ -11,6 +11,7 @@ public class LevelGoal : MonoBehaviour
     private Animator anim;
     private bool startedWinning = false;
     private PlayerInput playerInput;
+    private bool shouldCollectCoin = false;
 
     void Start(){
         anim = GetComponent<Animator>();
@@ -46,10 +47,19 @@ public class LevelGoal : MonoBehaviour
         anim.SetTrigger("Win");
         GetComponent<AudioSource>().volume = MusicPlayer.SFX_Volume;
         GetComponent<AudioSource>().Play();
+        if (shouldCollectCoin){
+            LevelOrder levelOrder = FindObjectOfType<LevelOrder>();
+            if (levelOrder != null){
+                levelOrder.SetCollectedCoin();
+            }
+        }
 
         yield return new WaitForSecondsRealtime(2.5f);
 
         playerInput.ActivateInput();
         SceneManager.LoadScene(nextSceneName);
+    }
+    public void CollectCoin(){
+        shouldCollectCoin = true;
     }
 }
