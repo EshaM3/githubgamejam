@@ -19,7 +19,7 @@ public class LevelOrder : MonoBehaviour
         if (index > -1 && index < levels.Length-1){
             return levels[index+1];
         }
-        return "Title";
+        return "Ending";
     }
 
     int LevelIndex(string currentLevel){
@@ -61,5 +61,36 @@ public class LevelOrder : MonoBehaviour
             return collectedCoins[index];
         }
         return false;
+    }
+
+    public int GetCoinValue(int i){
+        if (i == 3){
+            return 25;
+        }
+        if (i == 2){
+            return 10;
+        }
+        if (i == 1){
+            return 5;
+        }
+        return 1;
+    }
+
+    public int GetTotalCoins(){
+        int sum = 0;
+        foreach (int i in coinDifficulty){
+            sum += GetCoinValue(i);
+        }
+        return sum;
+    }
+
+    public int GetCollectedCoins(){
+        int sum = 0;
+        for (int i = 0; i < coinDifficulty.Length && i < collectedCoins.Length; i++){
+            if (collectedCoins[i]){
+                sum += GetCoinValue(coinDifficulty[i]);
+            }
+        }
+        return sum;
     }
 }
