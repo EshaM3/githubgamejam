@@ -163,8 +163,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 219370601}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.000030517578, y: -0.000030517578, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -369,6 +369,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b0ff1462b0b5425d8603703f8693491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfxSlider: {fileID: 1430804657}
+  musicSlider: {fileID: 942569468}
 --- !u!1 &365202257
 GameObject:
   m_ObjectHideFlags: 0
@@ -1134,6 +1136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextSceneName: Title
+  restartScene: 0
 --- !u!1 &1150518683
 GameObject:
   m_ObjectHideFlags: 0
@@ -1240,6 +1243,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f56aafc37e36349c3a07498d41846a31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menuHover: {fileID: 0}
+  menuClick: {fileID: 0}
+  oneShotPlayer: {fileID: 0}
 --- !u!82 &1200479612
 AudioSource:
   m_ObjectHideFlags: 0

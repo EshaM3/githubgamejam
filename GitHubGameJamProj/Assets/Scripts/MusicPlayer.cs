@@ -6,6 +6,8 @@ public class MusicPlayer : MonoBehaviour
 {
 
     public static float SFX_Volume = 0.5f;
+    public AudioClip menuHover, menuClick;
+    public AudioSource oneShotPlayer;
     // Start is called before the first frame update
     void Awake()
     {
@@ -34,5 +36,14 @@ public class MusicPlayer : MonoBehaviour
                 aud.volume = SFX_Volume;
             }
         }
+    }
+
+    public void PlayMenuHover(){
+        oneShotPlayer.PlayOneShot(menuHover,SFX_Volume);
+    }
+
+    public void PlayMenuClick(){
+        Debug.Log("Playing Click Sound");
+        oneShotPlayer.PlayOneShot(menuClick,SFX_Volume);
     }
 }

@@ -12,6 +12,7 @@ public class LevelOrder : MonoBehaviour
         if (collectedCoins == null || collectedCoins.Length < levels.Length || collectedCoins.Length < coinDifficulty.Length){
             Debug.Log("building coin collection");
             collectedCoins = new bool[(int)Mathf.Max(levels.Length, coinDifficulty.Length)];
+            Debug.Log("total coins: " + GetTotalCoins());
         }
     }
     public string nextLevel(string currentLevel){

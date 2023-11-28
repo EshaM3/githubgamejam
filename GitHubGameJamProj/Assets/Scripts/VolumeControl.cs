@@ -1,14 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class VolumeControl : MonoBehaviour
 {
     MusicPlayer musicPlayer;
+    public Slider sfxSlider, musicSlider;
     // Start is called before the first frame update
     void Start()
     {
         musicPlayer = FindObjectOfType<MusicPlayer>();
+        sfxSlider.value = MusicPlayer.SFX_Volume;
+        musicSlider.value = musicPlayer.GetComponent<AudioSource>().volume;
     }
 
     public void SetSFXVolume(float newVolume){
