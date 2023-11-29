@@ -11,8 +11,10 @@ public class VolumeControl : MonoBehaviour
     void Start()
     {
         musicPlayer = FindObjectOfType<MusicPlayer>();
-        sfxSlider.value = MusicPlayer.SFX_Volume;
-        musicSlider.value = musicPlayer.GetComponent<AudioSource>().volume;
+        if (musicPlayer != null){
+            sfxSlider.value = MusicPlayer.SFX_Volume;
+            musicSlider.value = musicPlayer.GetComponent<AudioSource>().volume;
+        }
     }
 
     public void SetSFXVolume(float newVolume){
