@@ -32,7 +32,7 @@ public class LevelOrder : MonoBehaviour
         return -1;
     }
 
-    int LevelIndex(){
+    public int LevelIndex(){
         return LevelIndex(SceneManager.GetActiveScene().name);
     }
 

@@ -14,6 +14,12 @@ public class PauseBehavior : MonoBehaviour
         Time.timeScale = 0;
         panel.SetActive(true);
     }
+    void Update(){
+        if (Time.timeScale == 0){
+            Cursor.lockState = CursorLockMode.None;
+            panel.SetActive(true);
+        }
+    }
     public void UnpauseGame(){
         Debug.Log("unpausing");
         Time.timeScale = 1f;
