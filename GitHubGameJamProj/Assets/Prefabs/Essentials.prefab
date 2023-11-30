@@ -119,7 +119,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -15, y: -15}
-  m_SizeDelta: {x: 200, y: 115}
+  m_SizeDelta: {x: 400, y: 115}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &4214701219000513484
 CanvasRenderer:
@@ -621,7 +621,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 99
+  m_text: Level 99
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a242e7a89bece44a1a50c36778f3c027, type: 2}
   m_sharedMaterial: {fileID: 4032882995719902512, guid: a242e7a89bece44a1a50c36778f3c027,
@@ -704,6 +704,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textMeshPro: {fileID: 7366092527981640814}
+  panel: {fileID: 2215915595316224465}
 --- !u!1 &1530385444387770769
 GameObject:
   m_ObjectHideFlags: 0
