@@ -25,7 +25,15 @@ public class EndCardSwap : MonoBehaviour
             } else {
                 image.sprite = cards[3];
             }
-            textMesh.text = "$" + (collected/100.0f);
+            int dollars = collected/100;
+            string dollarText = "$" + dollars + ".";
+            int cents = collected%100;
+            if (cents < 10){
+                dollarText += "" + cents + "0";
+            } else {
+                dollarText += "" + cents;
+            }
+            textMesh.text = dollarText;
         }
     }
 
